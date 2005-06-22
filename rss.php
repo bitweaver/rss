@@ -28,7 +28,7 @@ $urlarray = parse_url($url);
 
 $pagename = substr($urlarray["path"], strrpos($urlarray["path"], '/') + 1);
 
-$home = htmlspecialchars(httpPrefix().$bitIndex);
+$home = htmlspecialchars(httpPrefix().$gBitSystem->getPreference( 'bitIndex' );
 $img = htmlspecialchars($gBitSystem->getPreference('rssfeed_image_url',httpPrefix().str_replace($pagename, "img/tiki.jpg", $urlarray["path"])));
 
 $url = htmlspecialchars(httpPrefix().$url);
