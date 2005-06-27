@@ -1,4 +1,18 @@
 <?php
+/**
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/class_rdf_parser.php,v 1.1.1.1.2.1 2005/06/27 15:56:41 lsces Exp $
+ *
+ * Copyright (c) 2004 bitweaver.org
+ * Copyright (c) 2003 tikwiki.org
+ * Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
+ * All Rights Reserved. See copyright.txt for details and a complete list of authors.
+ * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
+ *
+ * $Id: class_rdf_parser.php,v 1.1.1.1.2.1 2005/06/27 15:56:41 lsces Exp $
+ * @author  Luis Argerich (lrargerich@yahoo.com)
+ * @package rss
+ */
+
 // ##################################################################################
 // Title                     : Class Rdf_parser
 // Version                   : 1.0
@@ -25,6 +39,9 @@ if(defined("_class_rdf_is_included")) {
   return;
 }
 
+/**
+ * required setup
+ */
 define("_class_rdf_is_included",1);
 
 /* First we define some constants */
@@ -79,6 +96,10 @@ define("RDF_OBJECT_TYPE_RESOURCE",0);
 define("RDF_OBJECT_TYPE_LITERAL",1);
 define("RDF_OBJECT_TYPE_XML",2);
 
+/**
+ * @package rss
+ * @subpackage Rdf_parser
+ */
 class Rdf_parser {
 
 var $rdf_parser;
