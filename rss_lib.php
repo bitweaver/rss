@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @package rss
+ * @subpackage RSSLib
+ */
 class RSSLib extends BitBase {
 	function RSSLib() {
 		BitBase::BitBase();
