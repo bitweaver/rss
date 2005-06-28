@@ -1,4 +1,18 @@
 <?php
+/**
+ * $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ *
+ * Copyright (c) 2004 bitweaver.org
+ * Copyright (c) 2003 tikwiki.org
+ * Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
+ * All Rights Reserved. See copyright.txt for details and a complete list of authors.
+ * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
+ *
+ * $Id: rss_error.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * @package rss
+ * @subpackage functions
+ */
+
 $feed = "Error Message";
 $title = "Tiki RSS Error Message"; // TODO: make configurable
 $desc = $errmsg; // TODO: make configurable
@@ -21,6 +35,9 @@ if (isset($_REQUEST["ver"]))
 $readrepl = "";
 //$changes=array("data"=>array("name"=>tra("Error"),"description"=>$errmsg,"last_modifiedied"=>$now));
 $changes=array("data"=>array());
+/**
+ * jump to rss main page
+ */
 require( RSS_PKG_URL.'rss.php' );
 die;
 ?>

@@ -1,4 +1,18 @@
 <?php
+/**
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/class_rss_parser.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ *
+ * Copyright (c) 2004 bitweaver.org
+ * Copyright (c) 2003 tikwiki.org
+ * Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
+ * All Rights Reserved. See copyright.txt for details and a complete list of authors.
+ * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
+ *
+ * $Id: class_rss_parser.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * @author  Luis Argerich (lrargerich@yahoo.com)
+ * @package rss
+ */
+ 
 // ##################################################################################
 // Title                     : Class RSS_parser
 // Version                   : 1.0
@@ -26,10 +40,17 @@ if (defined("_class_rss_parser_is_included")) {
   // do nothing since the class is already included
 }
 
+/**
+ * required setup
+ */
 define("_class_rss_parser_is_included",1);
 
 include_once("class_rdf_parser.php");
 
+/**
+ * @package rss
+ * @subpackage RSS_parser
+ */
 class RSS_parser {
   var $channel_handler_name;
   var $item_handler_name;
