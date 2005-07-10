@@ -50,7 +50,7 @@
 					<dt>Description</dt>
 					<dd>Description of the RSS feed. In some cases, such as blogs, the description is prepended to the actual description of the blog. If you prefer using the blog description as the description on it's own, please leave this blank.</dd>
 					<dt>Items</dt>
-					<dd>Maximum number of items that are proadcast when accessing the RSS feed.</dd></dl>"}
+					<dd>Maximum number of items that are broadcast when accessing the RSS feed.</dd></dl>"}
 
 			{/legend}
 		{/jstab}
