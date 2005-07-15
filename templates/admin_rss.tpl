@@ -68,7 +68,7 @@
 				<div class="row">
 					{formlabel label="Append CSS file" for="rssfeed_css"}
 					{forminput}
-						<input type="checkbox" name="rssfeed_css" id="rssfeed_css" value="y" {if $gBitSystemPrefs.rssfeed_css eq 'y'}checked="checked"{/if} />
+						<input type="checkbox" name="rssfeed_css" id="rssfeed_css" value="y" {if $gBitSystem->isFeatureActive( 'rssfeed_css' )}checked="checked"{/if} />
 						{formhelp note=""}
 					{/forminput}
 				</div>
