@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.1.1.1.2.3 2005/06/27 15:56:40 lsces Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.1.1.1.2.4 2005/07/18 18:52:59 drewslater Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss.php,v 1.1.1.1.2.3 2005/06/27 15:56:40 lsces Exp $
+ * $Id: rss.php,v 1.1.1.1.2.4 2005/07/18 18:52:59 drewslater Exp $
  * @package rss
  * @subpackage functions
  */
@@ -41,7 +41,7 @@ $urlarray = parse_url($url);
 
 $pagename = substr($urlarray["path"], strrpos($urlarray["path"], '/') + 1);
 
-$home = htmlspecialchars(httpPrefix().$gBitSystem->getPreference( 'bitIndex' ) );
+$home = htmlspecialchars(httpPrefix().'/'.$gBitSystem->getPreference( 'bitIndex' ) );
 $img = htmlspecialchars($gBitSystem->getPreference('rssfeed_image_url',httpPrefix().str_replace($pagename, "img/tiki.jpg", $urlarray["path"])));
 
 $url = htmlspecialchars(httpPrefix().$url);
@@ -135,7 +135,7 @@ if ($output == "") {
 		if ($rss_version < 2) {
 			$date = htmlspecialchars($gBitSystem->iso_8601($chg["$dateId"]));
 		}
-		$about = httpPrefix().$chg['display_url'];
+		$about = $chg['display_url'];
 		// forums have threads, add those to the url:
 		if ($id == "forum_id") { $resource .= "&comments_parent_id=".$chg["thread_id"]; }
 		$about = htmlspecialchars($about);
