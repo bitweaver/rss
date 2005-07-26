@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.1 2005/06/19 05:03:07 bitweaver Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.1.1.1.2.1 2005/07/26 15:50:26 drewslater Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -15,7 +15,7 @@ foreach( array_keys( $gBitSystem->mPrefs ) as $rss_feed ) {
 		);
 	}
 }
-$smarty->assign( "formRSSFeeds",$formRSSFeeds );
+$gBitSmarty->assign( "formRSSFeeds",$formRSSFeeds );
 
 $formRSSSettings = array(
 	'rssfeed_language' => array(
@@ -41,7 +41,7 @@ $formRSSSettings = array(
 		'label' => 'Enter the full URL to an image that you want to associate with your RSS channels',
 	),
 );
-$smarty->assign( "formRSSSettings",$formRSSSettings );
+$gBitSmarty->assign( "formRSSSettings",$formRSSSettings );
 
 $processForm = set_tab();
 
