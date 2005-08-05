@@ -22,11 +22,11 @@
 
 {if $rss_id > 0}
 <h2>{tr}Edit this RSS module:{/tr} {$name}</h2>
-<a href="{$gBitLoc.RSS_PKG_URL}admin/index.php">{tr}Create new RSS module{/tr}</a>
+<a href="{$smarty.const.RSS_PKG_URL}admin/index.php">{tr}Create new RSS module{/tr}</a>
 {else}
 <h2>{tr}Create new RSS module{/tr}</h2>
 {/if}
-<form action="{$gBitLoc.RSS_PKG_URL}admin/index.php" method="post">
+<form action="{$smarty.const.RSS_PKG_URL}admin/index.php" method="post">
 <input type="hidden" name="rss_id" value="{$rss_id|escape}" />
 <table class="panel">
 <tr><td>
@@ -72,7 +72,7 @@
 <table class="find">
 <tr><td>{tr}Find{/tr}</td>
    <td>
-   <form method="get" action="{$gBitLoc.RSS_PKG_URL}admin/index.php">
+   <form method="get" action="{$smarty.const.RSS_PKG_URL}admin/index.php">
      <input type="text" name="find" value="{$find|escape}" />
      <input type="submit" value="{tr}find{/tr}" name="search" />
      <input type="hidden" name="sort_mode" value="{$sort_mode|escape}" />
@@ -83,14 +83,14 @@
 
 <table class="data">
 <tr>
-<th><a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'rss_id_desc'}rss_id_asc{else}rss_id_desc{/if}">{tr}ID{/tr}</a></th>
-<th><a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'name_desc'}name_asc{else}name_desc{/if}">{tr}Name{/tr}</a></th>
-<th><a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'description_desc'}description_asc{else}description_desc{/if}">{tr}Description{/tr}</a></th>
-<th><a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'url_desc'}url_asc{else}url_desc{/if}">{tr}URI{/tr}</a></th>
-<th><a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'last_updated_desc'}last_updated_asc{else}last_updated_desc{/if}">{tr}Last update{/tr}</a></th>
-<th><a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'refresh_desc'}refresh_asc{else}refresh_desc{/if}">{tr}refresh{/tr}</a></th>
-<th><a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'last_updated_desc'}show_title_asc{else}show_title_desc{/if}">{tr}Show feed title{/tr}</a></th>
-<th><a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'refresh_desc'}show_pub_date_asc{else}show_pub_date_desc{/if}">{tr}Show publication date{/tr}</a></th>
+<th><a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'rss_id_desc'}rss_id_asc{else}rss_id_desc{/if}">{tr}ID{/tr}</a></th>
+<th><a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'name_desc'}name_asc{else}name_desc{/if}">{tr}Name{/tr}</a></th>
+<th><a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'description_desc'}description_asc{else}description_desc{/if}">{tr}Description{/tr}</a></th>
+<th><a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'url_desc'}url_asc{else}url_desc{/if}">{tr}URI{/tr}</a></th>
+<th><a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'last_updated_desc'}last_updated_asc{else}last_updated_desc{/if}">{tr}Last update{/tr}</a></th>
+<th><a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'refresh_desc'}refresh_asc{else}refresh_desc{/if}">{tr}refresh{/tr}</a></th>
+<th><a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'last_updated_desc'}show_title_asc{else}show_title_desc{/if}">{tr}Show feed title{/tr}</a></th>
+<th><a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'refresh_desc'}show_pub_date_asc{else}show_pub_date_desc{/if}">{tr}Show publication date{/tr}</a></th>
 <th>{tr}action{/tr}</th>
 </tr>
 {cycle values="even,odd" print=false}
@@ -105,9 +105,9 @@
 <td>{$channels[user].show_title}</td>
 <td>{$channels[user].show_pub_date}</td>
 <td>
-   <a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;remove={$channels[user].rss_id}">{tr}remove{/tr}</a>
-   <a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;rss_id={$channels[user].rss_id}">{tr}edit{/tr}</a>
-   <a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;view={$channels[user].rss_id}">{tr}view{/tr}</a>
+   <a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;remove={$channels[user].rss_id}">{tr}remove{/tr}</a>
+   <a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;rss_id={$channels[user].rss_id}">{tr}edit{/tr}</a>
+   <a href="{$smarty.const.RSS_PKG_URL}admin/index.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;view={$channels[user].rss_id}">{tr}view{/tr}</a>
 </td>
 </tr>
 {sectionelse}
@@ -119,17 +119,17 @@
 
 <div class="pagination">
 {if $prev_offset >= 0}
-[<a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?find={$find}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">{tr}prev{/tr}</a>]&nbsp;
+[<a href="{$smarty.const.RSS_PKG_URL}admin/index.php?find={$find}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">{tr}prev{/tr}</a>]&nbsp;
 {/if}
 {tr}Page{/tr}: {$actual_page}/{$cant_pages}
 {if $next_offset >= 0}
-&nbsp;[<a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">{tr}next{/tr}</a>]
+&nbsp;[<a href="{$smarty.const.RSS_PKG_URL}admin/index.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">{tr}next{/tr}</a>]
 {/if}
 {if $direct_pagination eq 'y'}
 <br />
 {section loop=$cant_pages name=foo}
 {assign var=selector_offset value=$smarty.section.foo.index|times:$maxRecords}
-<a href="{$gBitLoc.RSS_PKG_URL}admin/index.php?find={$find}&amp;offset={$selector_offset}&amp;sort_mode={$sort_mode}">
+<a href="{$smarty.const.RSS_PKG_URL}admin/index.php?find={$find}&amp;offset={$selector_offset}&amp;sort_mode={$sort_mode}">
 {$smarty.section.foo.index_next}</a>&nbsp;
 {/section}
 {/if}
