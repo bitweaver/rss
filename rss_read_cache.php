@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss_read_cache.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss_read_cache.php,v 1.3 2005/08/07 17:44:21 squareing Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_read_cache.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * $Id: rss_read_cache.php,v 1.3 2005/08/07 17:44:21 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -29,7 +29,7 @@ $feed = substr( md5( $_SERVER['REQUEST_URI'] ), 0, 30 );
 
 $query = "select * from `".BIT_DB_PREFIX."tiki_rss_feeds` where `name`=? and `rss_ver`=?";
 $bindvars=array($feed, $rss_version);
-$result = $gBitSystem->query($query, $bindvars);
+$result = $gBitSystem->mDb->query($query, $bindvars);
 
 $changes = "";
 $output = "EMPTY";
@@ -42,7 +42,7 @@ if (!$result->numRows())
 
   // default value for cache timeout is 300 (5 minutes)
   $bindvars=array($feed,(int) $rss_version,(int) 300 ,(int) $now, $output);
-  $result = $gBitSystem->query($query, $bindvars);
+  $result = $gBitSystem->mDb->query($query, $bindvars);
 }
 else
 {

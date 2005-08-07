@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.3 2005/07/25 20:02:44 squareing Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.4 2005/08/07 17:44:21 squareing Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss.php,v 1.3 2005/07/25 20:02:44 squareing Exp $
+ * $Id: rss.php,v 1.4 2005/08/07 17:44:21 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -178,7 +178,7 @@ $feed = substr( md5( $_SERVER['REQUEST_URI'] ), 0, 30 );
 	$now = date("U");
 	$query = "update `".BIT_DB_PREFIX."tiki_rss_feeds` set `cache`=?, `last_updated`=? where `name`=? and `rss_ver`=?";
 	$bindvars = array( BitDb::db_byte_encode( $output ), (int) $now, $feed, $rss_version);
-	$result = $gBitSystem->query($query,$bindvars);
+	$result = $gBitSystem->mDb->query($query,$bindvars);
 }
 
 print $output;
