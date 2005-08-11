@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/class_rss_parser.php,v 1.1.1.1.2.1 2005/06/27 15:56:41 lsces Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/class_rss_parser.php,v 1.1.1.1.2.2 2005/08/11 15:17:40 squareing Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: class_rss_parser.php,v 1.1.1.1.2.1 2005/06/27 15:56:41 lsces Exp $
+ * $Id: class_rss_parser.php,v 1.1.1.1.2.2 2005/08/11 15:17:40 squareing Exp $
  * @author  Luis Argerich (lrargerich@yahoo.com)
  * @package rss
  */
@@ -62,7 +62,6 @@ class RSS_parser {
   var $item_properties=Array();
   var $channel_image=Array();
   var $channel_textinput=Array();
-  var $item_properties=Array();
 
   function get_channel_data() {
     // Return channel properties
