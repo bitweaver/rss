@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.1.1.1.2.6 2005/08/07 16:25:59 lsces Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.1.1.1.2.7 2005/08/11 10:25:50 jht001 Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss.php,v 1.1.1.1.2.6 2005/08/07 16:25:59 lsces Exp $
+ * $Id: rss.php,v 1.1.1.1.2.7 2005/08/11 10:25:50 jht001 Exp $
  * @package rss
  * @subpackage functions
  */
@@ -27,7 +27,6 @@ $rss_use_css = false; // default is: do not use css
 if (isset($_REQUEST["css"])) {
 	$rss_use_css = true;
 }
-
 // date format for RDF 2.0
 $datenow = htmlspecialchars(gmdate('D, d M Y H:i:s T', date("U")));
 if ($rss_version < 2) {
@@ -48,7 +47,7 @@ $url = htmlspecialchars(httpPrefix().$url);
 $title = htmlspecialchars($title);
 $desc = htmlspecialchars($desc);
 $url = htmlspecialchars($url);
-$css = htmlspecialchars(httpPrefix().str_replace($pagename, "rss-style.css", $urlarray["path"]));
+$css = htmlspecialchars(httpPrefix().str_replace($pagename, "rss_style.css", $urlarray["path"]));
 
 // --- output starts here
 header("content-type: text/xml");
