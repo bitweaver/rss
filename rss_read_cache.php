@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss_read_cache.php,v 1.1.1.1.2.3 2005/08/07 16:25:59 lsces Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss_read_cache.php,v 1.1.1.1.2.4 2005/08/22 19:45:35 spiderr Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_read_cache.php,v 1.1.1.1.2.3 2005/08/07 16:25:59 lsces Exp $
+ * $Id: rss_read_cache.php,v 1.1.1.1.2.4 2005/08/22 19:45:35 spiderr Exp $
  * @package rss
  * @subpackage functions
  */
