@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.1.1.1.2.1 2005/06/27 15:56:41 lsces Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.1.1.1.2.2 2005/08/25 21:31:44 lsces Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_error.php,v 1.1.1.1.2.1 2005/06/27 15:56:41 lsces Exp $
+ * $Id: rss_error.php,v 1.1.1.1.2.2 2005/08/25 21:31:44 lsces Exp $
  * @package rss
  * @subpackage functions
  */
@@ -22,7 +22,7 @@ $desc_id = "description";
 $id = "errorMessage";
 $home ="";
 $output="";
-$now = date("U");
+$now = $gBitSystem->getUTCTime();
 // get default rss feed version from database or set to 1.0 if none in there
 $rss_version = $gBitSystem->getPreference("rssfeed_default_version",1);
 

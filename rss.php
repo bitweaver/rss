@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.1.1.1.2.8 2005/08/22 19:45:35 spiderr Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.1.1.1.2.9 2005/08/25 21:31:44 lsces Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss.php,v 1.1.1.1.2.8 2005/08/22 19:45:35 spiderr Exp $
+ * $Id: rss.php,v 1.1.1.1.2.9 2005/08/25 21:31:44 lsces Exp $
  * @package rss
  * @subpackage functions
  */
@@ -28,10 +28,10 @@ if (isset($_REQUEST["css"])) {
 	$rss_use_css = true;
 }
 // date format for RDF 2.0
-$datenow = htmlspecialchars(gmdate('D, d M Y H:i:s T', date("U")));
+$datenow = htmlspecialchars(gmdate('D, d M Y H:i:s T', $gBitSystem->getUTCTime()));
 if ($rss_version < 2) {
 	// date format for RDF 1.0
-	$datenow = htmlspecialchars($gBitSystem->iso_8601(date("U")));
+	$datenow = htmlspecialchars($gBitSystem->iso_8601($gBitSystem->getUTCTime()));
 }
 
 $url = $_SERVER["REQUEST_URI"];

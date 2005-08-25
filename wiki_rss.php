@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/wiki_rss.php,v 1.1.1.1.2.3 2005/08/22 19:45:35 spiderr Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/wiki_rss.php,v 1.1.1.1.2.4 2005/08/25 21:31:44 lsces Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: wiki_rss.php,v 1.1.1.1.2.3 2005/08/22 19:45:35 spiderr Exp $
+ * $Id: wiki_rss.php,v 1.1.1.1.2.4 2005/08/25 21:31:44 lsces Exp $
  * @package rss
  * @subpackage functions
  */
@@ -30,7 +30,7 @@ if (!$gBitUser->hasPermission( 'bit_p_view' )) {
 
 $title = $gBitSystem->getPreference( 'title_rss_wiki', "bitweaver wiki RSS feed" );
 $desc = $gBitSystem->getPreference( 'desc_rss_wiki', "Last modifications to the Wiki." );
-$now = date("U");
+$now = $gBitSystem->getUTCTime();
 $id = "title";
 $desc_id = "comment";
 $dateId = "last_modified";

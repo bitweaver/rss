@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss_read_cache.php,v 1.1.1.1.2.4 2005/08/22 19:45:35 spiderr Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss_read_cache.php,v 1.1.1.1.2.5 2005/08/25 21:31:44 lsces Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_read_cache.php,v 1.1.1.1.2.4 2005/08/22 19:45:35 spiderr Exp $
+ * $Id: rss_read_cache.php,v 1.1.1.1.2.5 2005/08/25 21:31:44 lsces Exp $
  * @package rss
  * @subpackage functions
  */
@@ -37,7 +37,7 @@ $output = "EMPTY";
 if (!$result->numRows())
 {
   // nothing found, then insert row for this feed+rss_ver
-  $now = date("U");
+  $now = $gBitSystem->getUTCTime();
   $query = "insert into `".BIT_DB_PREFIX."tiki_rss_feeds`(`name`,`rss_ver`,`refresh`,`last_updated`,`cache`) values(?,?,?,?,?)";
 
   // default value for cache timeout is 300 (5 minutes)

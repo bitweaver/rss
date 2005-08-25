@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/articles_rss.php,v 1.1.1.1.2.2 2005/06/27 15:56:41 lsces Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/articles_rss.php,v 1.1.1.1.2.3 2005/08/25 21:31:44 lsces Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: articles_rss.php,v 1.1.1.1.2.2 2005/06/27 15:56:41 lsces Exp $
+ * $Id: articles_rss.php,v 1.1.1.1.2.3 2005/08/25 21:31:44 lsces Exp $
  * @author  Luis Argerich (lrargerich@yahoo.com)
  * @package rss
  */
@@ -31,7 +31,7 @@ if (!$gBitUser->hasPermission( 'bit_p_read_article' )) {
 
 $title = "Tiki RSS feed for articles"; // TODO: make configurable
 $desc = "Last articles."; // TODO: make configurable
-$now = date("U");
+$now = $gBitSystem->getUTCTime();
 $id = "article_id";
 $titleId = "title";
 $desc_id = "heading";

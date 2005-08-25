@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/image_gallery_rss.php,v 1.1.1.1.2.1 2005/06/27 15:56:41 lsces Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/image_gallery_rss.php,v 1.1.1.1.2.2 2005/08/25 21:31:44 lsces Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: image_gallery_rss.php,v 1.1.1.1.2.1 2005/06/27 15:56:41 lsces Exp $
+ * $Id: image_gallery_rss.php,v 1.1.1.1.2.2 2005/08/25 21:31:44 lsces Exp $
  * @package rss
  * @subpackage functions
  */
@@ -37,7 +37,7 @@ if (!isset($_REQUEST["gallery_id"])) {
 
 $tmp = $imagegallib->get_gallery($_REQUEST["gallery_id"]);
 $title = "Tiki RSS feed for the image gallery: ".$tmp["name"]; // TODO: make configurable
-$now = date("U");
+$now = $gBitSystem->getUTCTime();
 $desc = $tmp["description"]; // TODO: make configurable
 $id = "image_id";
 $titleId = "name";
