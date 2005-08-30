@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.3 2005/08/07 17:44:21 squareing Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.4 2005/08/30 22:30:11 squareing Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.3 2005/08/07 17:44:21 squareing Exp $
+ * $Id: rss_lib.php,v 1.4 2005/08/30 22:30:11 squareing Exp $
  * @package rss
  */
 
@@ -181,8 +181,9 @@ class RSSLib extends BitBase {
 		$info = $this->get_rss_module($rss_id);
 
 		if ($info) {
+			global $gBitSystem;
 			$data = $this->rss_iconv( tp_http_request($info['url']));
-			$now = date("U");
+			$now = $gBitSystem->getUTCTime();
 			$query = "update `".BIT_DB_PREFIX."tiki_rss_modules` set `content`=?, `last_updated`=? where `rss_id`=?";
 			$result = $this->mDb->query($query,array((string)$data,(int) $now, (int) $rss_id));
 			return $data;
@@ -231,7 +232,8 @@ class RSSLib extends BitBase {
 		if( is_numeric( $rss_id ) ) {
 
 			if( $info = $this->get_rss_module($rss_id) ) {
-				$now = date("U");
+				global $gBitSystem;
+				$now = $gBitSystem->getUTCTime();
 		
 		//		if ($info["last_updated"] + $info["refresh"] < $now) {
 					$data = $this->refresh_rss_module($rss_id);

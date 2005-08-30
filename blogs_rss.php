@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/blogs_rss.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/blogs_rss.php,v 1.3 2005/08/30 22:30:11 squareing Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,12 +8,12 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: blogs_rss.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * $Id: blogs_rss.php,v 1.3 2005/08/30 22:30:11 squareing Exp $
  * @author  Luis Argerich (lrargerich@yahoo.com)
  * @package rss
  */
 
-// $Header: /cvsroot/bitweaver/_bit_rss/Attic/blogs_rss.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/Attic/blogs_rss.php,v 1.3 2005/08/30 22:30:11 squareing Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -45,7 +45,7 @@ $id = "blog_id";
 $tmp = $gBitSystem -> get_blog($_REQUEST["$id"]);
 $title = "Tiki RSS feed for blog ".$tmp["title"]; // TODO: make configurable
 $desc = $tmp["description"]; // TODO: make configurable
-$now = date("U");
+$now = $gBitSystem->getUTCTime();
 $desc_id = "data";
 $dateId = "created";
 $titleId = "created";

@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/map_rss.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/map_rss.php,v 1.3 2005/08/30 22:30:11 squareing Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: map_rss.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * $Id: map_rss.php,v 1.3 2005/08/30 22:30:11 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -31,7 +31,7 @@ if(!$gBitUser->hasPermission( 'bit_p_map_view' )) {
 
 $title = "Tiki RSS feed for maps"; // TODO: make configurable
 $desc = "List of maps available."; // TODO: make configurable
-$now = date("U");
+$now = $gBitSystem->getUTCTime();
 $id = "name";
 $titleId = "name";
 $desc_id = "description";

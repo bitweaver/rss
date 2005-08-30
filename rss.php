@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.6 2005/08/24 20:57:29 squareing Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.7 2005/08/30 22:30:11 squareing Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss.php,v 1.6 2005/08/24 20:57:29 squareing Exp $
+ * $Id: rss.php,v 1.7 2005/08/30 22:30:11 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -28,10 +28,10 @@ if (isset($_REQUEST["css"])) {
 	$rss_use_css = true;
 }
 // date format for RDF 2.0
-$datenow = htmlspecialchars(gmdate('D, d M Y H:i:s T', date("U")));
+$datenow = htmlspecialchars(gmdate('D, d M Y H:i:s T', $gBitSystem->getUTCTime()));
 if ($rss_version < 2) {
 	// date format for RDF 1.0
-	$datenow = htmlspecialchars($gBitSystem->iso_8601(date("U")));
+	$datenow = htmlspecialchars($gBitSystem->iso_8601($gBitSystem->getUTCTime()));
 }
 
 $url = $_SERVER["REQUEST_URI"];
@@ -174,7 +174,7 @@ if ($output == "") {
 $feed = substr( md5( $_SERVER['REQUEST_URI'] ), 0, 30 );
 
 	// update cache with new generated data
-	$now = date("U");
+	$now = $gBitSystem->getUTCTime();
 	$query = "update `".BIT_DB_PREFIX."tiki_rss_feeds` set `cache`=?, `last_updated`=? where `name`=? and `rss_ver`=?";
 	$bindvars = array( BitDb::db_byte_encode( $output ), (int) $now, $feed, $rss_version);
 	$result = $gBitSystem->mDb->query($query,$bindvars);

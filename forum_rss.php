@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/forum_rss.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/forum_rss.php,v 1.3 2005/08/30 22:30:11 squareing Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: forum_rss.php,v 1.2 2005/06/28 07:45:56 spiderr Exp $
+ * $Id: forum_rss.php,v 1.3 2005/08/30 22:30:11 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -37,7 +37,7 @@ if(!isset($_REQUEST["forum_id"])) {
 $tmp = $gBitSystem->get_forum($_REQUEST["forum_id"]);
 $title = "Tiki RSS feed for forum: ".$tmp["name"]; // TODO: make configurable
 $desc = $tmp["description"]; // TODO: make configurable
-$now = date("U");
+$now = $gBitSystem->getUTCTime();
 $id = "forum_id";
 $desc_id = "data";
 $dateId = "comment_date";
