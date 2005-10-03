@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.1.1.1.2.10 2005/08/25 22:11:20 lsces Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/Attic/rss.php,v 1.1.1.1.2.11 2005/10/03 01:57:19 jht001 Exp $
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss.php,v 1.1.1.1.2.10 2005/08/25 22:11:20 lsces Exp $
+ * $Id: rss.php,v 1.1.1.1.2.11 2005/10/03 01:57:19 jht001 Exp $
  * @package rss
  * @subpackage functions
  */
@@ -134,12 +134,12 @@ if ($output == "") {
 		if ($rss_version < 2) {
 			$date = htmlspecialchars($gBitSystem->iso_8601($chg["$dateId"]));
 		}
-		$about = $chg['display_url'];
+		$about =  httpPrefix() . $chg['display_url'];
 		// forums have threads, add those to the url:
 		if ($id == "forum_id") { $resource .= "&comments_parent_id=".$chg["thread_id"]; }
 		$about = htmlspecialchars($about);
 
-		$title = $chg['title'];
+		$title = htmlspecialchars($chg['title']);
 		// titles for blogs are dates, so make them readable:
 //		if ($titleId == "created") { $title = htmlspecialchars(gmdate('D, d M Y H:i:s T', $title)); }
 		$description = htmlspecialchars($chg["$desc_id"]);
@@ -181,5 +181,4 @@ $feed = substr( md5( $_SERVER['REQUEST_URI'] ), 0, 30 );
 }
 
 print $output;
-
 ?>
