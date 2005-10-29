@@ -20,15 +20,17 @@ $rss->link = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
 $rss->syndicationURL = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL.'/'.$_SERVER['PHP_SELF'];
 
 // feed image
-$image->descriptionTruncSize = $gBitSystem->getPreference( 'rssfeed_truncate', 500 );
-$image->descriptionHtmlSyndicated = true;
+if( !empty( $gBitSystem->mPrefs['rssfeed_image_url'] ) ) {
+	$image->descriptionTruncSize = $gBitSystem->getPreference( 'rssfeed_truncate', 500 );
+	$image->descriptionHtmlSyndicated = true;
 
-$image = new FeedImage();
-$image->title = $gBitSystem->mPrefs['siteTitle'];
-$image->url = $gBitSystem->getPreference( 'rssfeed_image_url', '');
-$image->link = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
-$image->description = tra( 'Feed provided by' ).': '.$gBitSystem->mPrefs['siteTitle'].' '.tra( 'Click to visit.' );
-$rss->image = $image;
+	$image = new FeedImage();
+	$image->title = $gBitSystem->mPrefs['siteTitle'];
+	$image->url = $gBitSystem->mPrefs['rssfeed_image_url'];
+	$image->link = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
+	$image->description = tra( 'Feed provided by' ).': '.$gBitSystem->mPrefs['siteTitle'].' '.tra( 'Click to visit.' );
+	$rss->image = $image;
+}
 
 // here we work out what type of feed were going to feed
 if( empty( $_REQUEST['version'] ) ) {
@@ -41,33 +43,43 @@ if( empty( $_REQUEST['version'] ) ) {
 $rss_version_name = $version;
 switch( $version ) {
 	case "0":
+	case "rss091":
 	   $rss_version_name = "RSS0.91";
 	   break;
 	case "1":
+	case "rss10":
 	   $rss_version_name = "RSS1.0";
 	   break;
 	case "2":
+	case "rss20":
 	   $rss_version_name = "RSS2.0";
 	   break;
 	case "3":
+	case "pie01":
 	   $rss_version_name = "PIE0.1";
 	   break;
 	case "4":
+	case "mbox":
 	   $rss_version_name = "MBOX";
 	   break;
 	case "5":
+	case "atom":
 	   $rss_version_name = "ATOM";
 	   break;
 	case "6":
+	case "atom03":
 	   $rss_version_name = "ATOM0.3";
 	   break;
 	case "7":
+	case "opml":
 	   $rss_version_name = "OPML";
 	   break;
 	case "8":
+	case "html":
 	   $rss_version_name = "HTML";
 	   break;
 	case "9":
+	case "js":
 	   $rss_version_name = "JS";
 	   break;
 }
