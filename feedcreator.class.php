@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.1.2.2 2005/10/30 21:03:50 lsces Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.1.2.3 2005/10/30 21:04:57 lsces Exp $
  * @package rss
  */
  
@@ -158,7 +158,7 @@ while ($data = mysql_fetch_object($res)) {
 echo $rss->saveFeed("RSS1.0", "news/feed.xml");
 
 
-***************************************************************************
+/**************************************************************************
 *          A little setup                                                 *
 **************************************************************************/
 
