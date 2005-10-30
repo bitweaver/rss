@@ -1,4 +1,9 @@
 <?php
+/**
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.1.2.2 2005/10/30 21:03:50 lsces Exp $
+ * @package rss
+ */
+ 
 /***************************************************************************
 
 FeedCreator class v1.7.2
@@ -99,7 +104,9 @@ v1.0    06-24-03
 ***************************************************************************/
 
 /*** GENERAL USAGE *********************************************************
-
+/**
+ * Initialization
+ */
 include("feedcreator.class.php"); 
 
 $rss = new UniversalFeedCreator(); 
@@ -169,6 +176,7 @@ define("FEEDCREATOR_VERSION", "FeedCreator 1.7.2");
 
 
 /**
+ * @package rss
  * A FeedItem is a part of a FeedCreator feed.
  *
  * @author Kai Blankenhorn <kaib@bitfolge.de>
@@ -217,6 +225,7 @@ class FeedItem extends HtmlDescribable {
 
 
 /**
+ * @package rss
  * An FeedImage may be added to a FeedCreator feed.
  * @author Kai Blankenhorn <kaib@bitfolge.de>
  * @since 1.3
@@ -236,6 +245,7 @@ class FeedImage extends HtmlDescribable {
 
 
 /**
+ * @package rss
  * An HtmlDescribable is an item within a feed that can have a description that may
  * include HTML markup.
  */
@@ -266,6 +276,7 @@ class HtmlDescribable {
 
 
 /**
+ * @package rss
  * An FeedHtmlField describes and generates
  * a feed, item or image html field (probably a description). Output is 
  * generated based on $truncSize, $syndicateHtml properties.
@@ -319,9 +330,8 @@ class FeedHtmlField {
 
 }
 
-
-
 /**
+ * @package rss
  * UniversalFeedCreator lets you choose during runtime which
  * format to build.
  * For general usage of a feed class, see the FeedCreator class
@@ -449,6 +459,7 @@ class UniversalFeedCreator extends FeedCreator {
 
 
 /**
+ * @package rss
  * FeedCreator is the abstract base implementation for concrete
  * implementations that implement a specific format of syndication.
  *
@@ -701,6 +712,7 @@ class FeedCreator extends HtmlDescribable {
 
 
 /**
+ * @package rss
  * FeedDate is an internal class that stores a date for a feed or feed item.
  * Usually, you won't need to use this.
  */
@@ -795,6 +807,7 @@ class FeedDate {
 
 
 /**
+ * @package rss
  * RSSCreator10 is a FeedCreator that implements RDF Site Summary (RSS) 1.0.
  *
  * @see http://www.purl.org/rss/1.0/
@@ -871,6 +884,7 @@ class RSSCreator10 extends FeedCreator {
 
 
 /**
+ * @package rss
  * RSSCreator091 is a FeedCreator that implements RSS 0.91 Spec, revision 3.
  *
  * @see http://my.netscape.com/publish/formats/rss-spec-0.91.html
@@ -1009,6 +1023,7 @@ class RSSCreator091 extends FeedCreator {
 
 
 /**
+ * @package rss
  * RSSCreator20 is a FeedCreator that implements RDF Site Summary (RSS) 2.0.
  *
  * @see http://backend.userland.com/rss
@@ -1025,6 +1040,7 @@ class RSSCreator20 extends RSSCreator091 {
 
 
 /**
+ * @package rss
  * PIECreator01 is a FeedCreator that implements the emerging PIE specification,
  * as in http://intertwingly.net/wiki/pie/Syntax.
  *
@@ -1075,6 +1091,7 @@ class PIECreator01 extends FeedCreator {
 
 
 /**
+ * @package rss
  * AtomCreator03 is a FeedCreator that implements the atom specification,
  * as in http://www.intertwingly.net/wiki/pie/FrontPage.
  * Please note that just by using AtomCreator03 you won't automatically
@@ -1152,6 +1169,7 @@ class AtomCreator03 extends FeedCreator {
 
 
 /**
+ * @package rss
  * MBOXCreator is a FeedCreator that implements the mbox format
  * as described in http://www.qmail.org/man/man5/mbox.html
  *
@@ -1239,6 +1257,7 @@ class MBOXCreator extends FeedCreator {
 
 
 /**
+ * @package rss
  * OPMLCreator is a FeedCreator that implements OPML 1.0.
  * 
  * @see http://opml.scripting.com/spec
@@ -1292,6 +1311,7 @@ class OPMLCreator extends FeedCreator {
 
 
 /**
+ * @package rss
  * HTMLCreator is a FeedCreator that writes an HTML feed file to a specific 
  * location, overriding the createFeed method of the parent FeedCreator.
  * The HTML produced can be included over http by scripting languages, or serve
@@ -1443,6 +1463,7 @@ class HTMLCreator extends FeedCreator {
 
 
 /**
+ * @package rss
  * JSCreator is a class that writes a js file to a specific 
  * location, overriding the createFeed method of the parent HTMLCreator.
  *

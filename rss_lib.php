@@ -1,6 +1,7 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.1.1.1.2.5 2005/08/25 21:31:44 lsces Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.1.1.1.2.6 2005/10/30 21:03:50 lsces Exp $
+ * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
  * Copyright (c) 2003 tikwiki.org
@@ -8,13 +9,11 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.1.1.1.2.5 2005/08/25 21:31:44 lsces Exp $
- * @package rss
+ * $Id: rss_lib.php,v 1.1.1.1.2.6 2005/10/30 21:03:50 lsces Exp $
  */
 
 /**
  * @package rss
- * @subpackage RSSLib
  */
 class RSSLib extends BitBase {
 	function RSSLib() {

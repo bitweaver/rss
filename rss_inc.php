@@ -1,4 +1,13 @@
 <?php
+/**
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.1.2.3 2005/10/30 21:03:50 lsces Exp $
+ * @package rss
+ * @subpackage functions
+ */
+ 
+/**
+ * Initialization
+ */ 
 include( RSS_PKG_PATH."feedcreator.class.php" );
 
 // make sure the feeds cache dir is available
