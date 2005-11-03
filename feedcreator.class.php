@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.1.2.3 2005/10/30 21:04:57 lsces Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.1.2.4 2005/11/03 15:41:14 spiderr Exp $
  * @package rss
  */
  
@@ -143,8 +143,8 @@ while ($data = mysql_fetch_object($res)) {
     $item->description = $data->short; 
     
     //optional
-    item->descriptionTruncSize = 500;
-    item->descriptionHtmlSyndicated = true;
+    $item->descriptionTruncSize = 500;
+    $item->descriptionHtmlSyndicated = true;
 
     $item->date = $data->newsdate; 
     $item->source = "http://www.dailyphp.net"; 
