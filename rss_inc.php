@@ -1,14 +1,14 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.1.2.3 2005/10/30 21:03:50 lsces Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.1.2.4 2005/11/04 20:01:47 spiderr Exp $
  * @package rss
  * @subpackage functions
  */
- 
+
 /**
  * Initialization
- */ 
-include( RSS_PKG_PATH."feedcreator.class.php" );
+ */
+require_once( RSS_PKG_PATH."feedcreator.class.php" );
 
 // make sure the feeds cache dir is available
 if( !is_dir( TEMP_PKG_PATH.'rss' ) ) {
