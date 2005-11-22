@@ -1,5 +1,9 @@
 <?php
 /**
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.5 2005/11/22 07:27:31 squareing Exp $
+ * @package rss
+ * @subpackage functions
+ *
  * display an error message when there's something wrong.
  * default $message is:
  * "You don't have permission to view this syndication feed."
