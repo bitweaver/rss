@@ -37,8 +37,4 @@ $gBitInstaller->registerPackageInfo( RSS_PKG_NAME, array(
 
 // ### Default Preferences
 // every package inserts it's own rss preference
-$gBitInstaller->registerPreferences( RSS_PKG_NAME, array(
-	array( RSS_PKG_NAME, 'rss_wiki', 'y'),
-	array( RSS_PKG_NAME, 'rss_blogs', 'y'),
-) );
 ?>
