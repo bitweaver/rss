@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.1.1.1.2.6 2005/10/30 21:03:50 lsces Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.1.1.1.2.7 2005/12/20 20:41:16 mej Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.1.1.1.2.6 2005/10/30 21:03:50 lsces Exp $
+ * $Id: rss_lib.php,v 1.1.1.1.2.7 2005/12/20 20:41:16 mej Exp $
  */
 
 /**
@@ -138,8 +138,8 @@ class RSSLib extends BitBase {
 			xml_set_character_data_handler($this->parser, "characterDataHandler");
 	
 			if (!xml_parse($this->parser, $data, 1)) {
-				print ("Xml error: " . xml_error_string(xml_get_error_code($this->parser))."-".xml_get_current_line_number($this->parser). "<br />");
-	
+				print ("<!-- XML Parse error at " . xml_get_current_line_number($this->parser) . ":  "
+				       . xml_error_string(xml_get_error_code($this->parser)) . " -->\n");
 				return $news;
 			}
 	
