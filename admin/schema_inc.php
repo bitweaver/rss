@@ -2,7 +2,7 @@
 global $gBitInstaller;
 
 $tables = array(
-	'tiki_rss_modules' => "
+	'rss_modules' => "
 		rss_id I4 AUTO PRIMARY,
 		name C(30) NOTNULL,
 		description X,
@@ -14,7 +14,7 @@ $tables = array(
 		content X
 	",
 
-	'tiki_rss_feeds' => "
+	'rss_feeds' => "
 		name C(30) NOTNULL,
 		rss_ver C(1) NOTNULL DEFAULT '1',
 		refresh I4 DEFAULT '300',

@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.6 2005/12/26 12:25:52 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.7 2006/01/31 20:19:47 bitweaver Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.6 2005/12/26 12:25:52 squareing Exp $
+ * $Id: rss_lib.php,v 1.7 2006/01/31 20:19:47 bitweaver Exp $
  */
 
 /**
@@ -31,8 +31,8 @@ class RSSLib extends BitBase {
 			$bindvars=array();
 		}
 
-		$query = "select * from `".BIT_DB_PREFIX."tiki_rss_modules` $mid order by ".$this->mDb->convert_sortmode($sort_mode);
-		$query_cant = "select count(*) from `".BIT_DB_PREFIX."tiki_rss_modules` $mid";
+		$query = "select * from `".BIT_DB_PREFIX."rss_modules` $mid order by ".$this->mDb->convert_sortmode($sort_mode);
+		$query_cant = "select count(*) from `".BIT_DB_PREFIX."rss_modules` $mid";
 		$result = $this->mDb->query($query,$bindvars,$maxRecords,$offset);
 		$cant = $this->mDb->getOne($query_cant,$bindvars);
 		$ret = array();
@@ -56,11 +56,11 @@ class RSSLib extends BitBase {
 			$refresh = 60 * $refresh;
 	
 			if ($rss_id) {
-				$query = "update `".BIT_DB_PREFIX."tiki_rss_modules` set `name`=?,`description`=?,`refresh`=?,`url`=?,`show_title`=?,`show_pub_date`=? where `rss_id`=?";
+				$query = "update `".BIT_DB_PREFIX."rss_modules` set `name`=?,`description`=?,`refresh`=?,`url`=?,`show_title`=?,`show_pub_date`=? where `rss_id`=?";
 				$bindvars=array($name,$description,$refresh,$url,$show_title,$show_pub_date,$rss_id);
 			} else {
 				// was: replace into, no clue why.
-				$query = "insert into `".BIT_DB_PREFIX."tiki_rss_modules`(`name`,`description`,`url`,`refresh`,`content`,`last_updated`,`show_title`,`show_pub_date`)
+				$query = "insert into `".BIT_DB_PREFIX."rss_modules`(`name`,`description`,`url`,`refresh`,`content`,`last_updated`,`show_title`,`show_pub_date`)
 					values(?,?,?,?,?,?,?,?)";
 				$bindvars=array($name,$description,$url,$refresh,'',1000000,$show_title,$show_pub_date);
 			}
@@ -74,7 +74,7 @@ class RSSLib extends BitBase {
 	function remove_rss_module($rss_id) {
 		$ret = FALSE;
 		if( is_numeric( $rss_id ) ) {
-			$query = "delete from `".BIT_DB_PREFIX."tiki_rss_modules` where `rss_id`=?";
+			$query = "delete from `".BIT_DB_PREFIX."rss_modules` where `rss_id`=?";
 	
 			$result = $this->mDb->query($query,array($rss_id));
 			$ret = true;
@@ -85,7 +85,7 @@ class RSSLib extends BitBase {
 	function get_rss_module($rss_id) {
 		$ret = FALSE;
 		if( is_numeric( $rss_id ) ) {
-			$query = "select * from `".BIT_DB_PREFIX."tiki_rss_modules` where `rss_id`=?";
+			$query = "select * from `".BIT_DB_PREFIX."rss_modules` where `rss_id`=?";
 	
 			$result = $this->mDb->query($query,array($rss_id));
 	
@@ -183,7 +183,7 @@ class RSSLib extends BitBase {
 			global $gBitSystem;
 			$data = $this->rss_iconv( tp_http_request($info['url']));
 			$now = $gBitSystem->getUTCTime();
-			$query = "update `".BIT_DB_PREFIX."tiki_rss_modules` set `content`=?, `last_updated`=? where `rss_id`=?";
+			$query = "update `".BIT_DB_PREFIX."rss_modules` set `content`=?, `last_updated`=? where `rss_id`=?";
 			$result = $this->mDb->query($query,array((string)$data,(int) $now, (int) $rss_id));
 			return $data;
 		} else {
@@ -192,14 +192,14 @@ class RSSLib extends BitBase {
 	}
 
 	function rss_module_name_exists($name) {
-		$query = "select `name` from `".BIT_DB_PREFIX."tiki_rss_modules` where `name`=?";
+		$query = "select `name` from `".BIT_DB_PREFIX."rss_modules` where `name`=?";
 
 		$result = $this->mDb->query($query,array($name));
 		return $result->numRows();
 	}
 
 	function get_rss_module_id($name) {
-		$query = "select `rss_id` from `".BIT_DB_PREFIX."tiki_rss_modules` where `name`=?";
+		$query = "select `rss_id` from `".BIT_DB_PREFIX."rss_modules` where `name`=?";
 
 		$id = $this->mDb->getOne($query,array($name));
 		return $id;
@@ -208,7 +208,7 @@ class RSSLib extends BitBase {
 	function get_rss_show_title($rss_id) {
 		$ret = FALSE;
 		if( is_numeric( $rss_id ) ) {
-			$query = "select `show_title` from `".BIT_DB_PREFIX."tiki_rss_modules` where `rss_id`=?";
+			$query = "select `show_title` from `".BIT_DB_PREFIX."rss_modules` where `rss_id`=?";
 	
 			$ret = $this->mDb->getOne($query,array($rss_id));
 		}
@@ -218,7 +218,7 @@ class RSSLib extends BitBase {
 	function get_rss_show_pub_date($rss_id) {
 		$ret = FALSE;
 		if( is_numeric( $rss_id ) ) {
-			$query = "select `show_pub_date` from `".BIT_DB_PREFIX."tiki_rss_modules` where `rss_id`=?";
+			$query = "select `show_pub_date` from `".BIT_DB_PREFIX."rss_modules` where `rss_id`=?";
 	
 			$show_pub_date = $this->mDb->getOne($query,array($rss_id));
 			$ret = $show_pub_date;
