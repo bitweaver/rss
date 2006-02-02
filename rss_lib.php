@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.7 2006/01/31 20:19:47 bitweaver Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.8 2006/02/02 10:32:22 squareing Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.7 2006/01/31 20:19:47 bitweaver Exp $
+ * $Id: rss_lib.php,v 1.8 2006/02/02 10:32:22 squareing Exp $
  */
 
 /**
@@ -293,7 +293,7 @@ class RSSLib extends BitBase {
 					$xmlstr = @recode_string("$sencod..$tencod", $xmlstr);
 				} else {
 				// This PHP intallation don't have any EncodConvFunc...
-				// somebody could create tiki_iconv(...)?
+				// somebody could create bit_iconv(...)?
 				}
 			}
 
