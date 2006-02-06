@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.5 2005/12/26 12:25:52 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.6 2006/02/06 00:10:28 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -34,10 +34,10 @@ if( !empty( $gBitSystem->mPrefs['rssfeed_image_url'] ) ) {
 	$image->descriptionHtmlSyndicated = true;
 
 	$image = new FeedImage();
-	$image->title = $gBitSystem->mPrefs['siteTitle'];
+	$image->title = $gBitSystem->mPrefs['site_title'];
 	$image->url = $gBitSystem->mPrefs['rssfeed_image_url'];
 	$image->link = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
-	$image->description = tra( 'Feed provided by' ).': '.$gBitSystem->mPrefs['siteTitle'].' '.tra( 'Click to visit.' );
+	$image->description = tra( 'Feed provided by' ).': '.$gBitSystem->mPrefs['site_title'].' '.tra( 'Click to visit.' );
 	$rss->image = $image;
 }
 
