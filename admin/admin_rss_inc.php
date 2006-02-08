@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.3 2005/10/23 14:41:54 squareing Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.4 2006/02/08 21:51:15 squareing Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -54,15 +54,15 @@ $gBitSmarty->assign( "feedTypes",$feedTypes );
 if( !empty( $_REQUEST['feed_settings'] ) ) {
 	// save package specific RSS feed settings
 	foreach( array_keys( $formRSSFeeds ) as $item ) {
-		simple_set_toggle( $item );
-		simple_set_int( 'max_'.$item );
-		simple_set_value( 'title_'.$item );
-		simple_set_value( 'desc_'.$item );
+		simple_set_toggle( $item, preg_replace( "/^rss_/", "", $item ) );
+		simple_set_int( 'max_'.$item, preg_replace( "/^rss_/", "", $item ) );
+		simple_set_value( 'title_'.$item, preg_replace( "/^rss_/", "", $item ) );
+		simple_set_value( 'desc_'.$item, preg_replace( "/^rss_/", "", $item ) );
 	}
-	
+
 	// deal with the RSS settings
 	foreach( array_keys( $formRSSSettings ) as $item ) {
-		simple_set_value( $item );
+		simple_set_value( $item, RSS_PKG_NAME );
 	}
 	simple_set_value( 'rssfeed_default_version' );
 }
