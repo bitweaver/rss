@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.7 2006/02/09 10:30:38 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.8 2006/02/09 10:41:47 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -29,7 +29,7 @@ $rss->link = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
 $rss->syndicationURL = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL.'/'.$_SERVER['PHP_SELF'];
 
 // feed image
-if( !empty( $gBitSystem->getPreference( 'rssfeed_image_url' ) ) ) {
+if( $gBitSystem->isFeatureActive( 'rssfeed_image_url' ) ) {
 	$image->descriptionTruncSize = $gBitSystem->getPreference( 'rssfeed_truncate', 5000 );
 	$image->descriptionHtmlSyndicated = true;
 
