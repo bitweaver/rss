@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.6 2006/02/06 00:10:28 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.7 2006/02/09 10:30:38 squareing Exp $
  * @package rss
  * @subpackage functions
  *
@@ -10,8 +10,8 @@
  */
 
 // check permission to view the feed
-$rss->title = $gBitSystem->getPreference( 'title_rss_wiki', $gBitSystem->mPrefs['site_title'] );
-$rss->description = $gBitSystem->getPreference( 'desc_rss_wiki', $gBitSystem->mPrefs['site_title'].' - '.tra( 'RSS Feed' ) );
+$rss->title = $gBitSystem->getPreference( 'title_rss_wiki', $gBitSystem->getPreference( 'site_title' ) );
+$rss->description = $gBitSystem->getPreference( 'desc_rss_wiki', $gBitSystem->getPreference( 'site_title' ).' - '.tra( 'RSS Feed' ) );
 
 $item = new FeedItem();
 $item->title = tra( 'Syndication Problem' );

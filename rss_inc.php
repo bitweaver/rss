@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.6 2006/02/06 00:10:28 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.7 2006/02/09 10:30:38 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -29,15 +29,15 @@ $rss->link = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
 $rss->syndicationURL = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL.'/'.$_SERVER['PHP_SELF'];
 
 // feed image
-if( !empty( $gBitSystem->mPrefs['rssfeed_image_url'] ) ) {
+if( !empty( $gBitSystem->getPreference( 'rssfeed_image_url' ) ) ) {
 	$image->descriptionTruncSize = $gBitSystem->getPreference( 'rssfeed_truncate', 5000 );
 	$image->descriptionHtmlSyndicated = true;
 
 	$image = new FeedImage();
-	$image->title = $gBitSystem->mPrefs['site_title'];
-	$image->url = $gBitSystem->mPrefs['rssfeed_image_url'];
+	$image->title = $gBitSystem->getPreference( 'site_title' );
+	$image->url = $gBitSystem->getPreference( 'rssfeed_image_url' );
 	$image->link = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
-	$image->description = tra( 'Feed provided by' ).': '.$gBitSystem->mPrefs['site_title'].' '.tra( 'Click to visit.' );
+	$image->description = tra( 'Feed provided by' ).': '.$gBitSystem->getPreference( 'site_title' ).' '.tra( 'Click to visit.' );
 	$rss->image = $image;
 }
 
@@ -53,43 +53,43 @@ $rss_version_name = $version;
 switch( $version ) {
 	case "0":
 	case "rss091":
-	   $rss_version_name = "RSS0.91";
-	   break;
+		$rss_version_name = "RSS0.91";
+		break;
 	case "1":
 	case "rss10":
-	   $rss_version_name = "RSS1.0";
-	   break;
+		$rss_version_name = "RSS1.0";
+		break;
 	case "2":
 	case "rss20":
-	   $rss_version_name = "RSS2.0";
-	   break;
+		$rss_version_name = "RSS2.0";
+		break;
 	case "3":
 	case "pie01":
-	   $rss_version_name = "PIE0.1";
-	   break;
+		$rss_version_name = "PIE0.1";
+		break;
 	case "4":
 	case "mbox":
-	   $rss_version_name = "MBOX";
-	   break;
+		$rss_version_name = "MBOX";
+		break;
 	case "5":
 	case "atom":
-	   $rss_version_name = "ATOM";
-	   break;
+		$rss_version_name = "ATOM";
+		break;
 	case "6":
 	case "atom03":
-	   $rss_version_name = "ATOM0.3";
-	   break;
+		$rss_version_name = "ATOM0.3";
+		break;
 	case "7":
 	case "opml":
-	   $rss_version_name = "OPML";
-	   break;
+		$rss_version_name = "OPML";
+		break;
 	case "8":
 	case "html":
-	   $rss_version_name = "HTML";
-	   break;
+		$rss_version_name = "HTML";
+		break;
 	case "9":
 	case "js":
-	   $rss_version_name = "JS";
-	   break;
-}
+		$rss_version_name = "JS";
+		break;
+	}
 ?>
