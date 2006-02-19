@@ -19,7 +19,7 @@ $tables = array(
 		rss_ver C(1) NOTNULL DEFAULT '1',
 		refresh I4 DEFAULT '300',
 		last_updated I8,
-		cache B
+		rss_cache B
 	"
 );
 
