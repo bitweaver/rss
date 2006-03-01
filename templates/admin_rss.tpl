@@ -9,7 +9,7 @@
 					<div class="row">
 						{formlabel label="Feed for `$output.label`" for=$rss_pkg}
 						{forminput}
-							{html_checkboxes name="$rss_pkg" values="y" checked=`$gBitSystem->getConfig('')$rss_pkg` labels=false id=$rss_pkg}
+							{html_checkboxes name="$rss_pkg" values="y" checked=`$gBitSystem->getConfig($rss_pkg) labels=false id=$rss_pkg}
 							{assign var="max_rss" value="max_`$rss_pkg`"}
 							{assign var="title_rss" value="title_`$rss_pkg`"}
 							{assign var="desc_rss" value="desc_`$rss_pkg`"}
@@ -20,21 +20,21 @@
 					<div class="row">
 						{formlabel label="Items" for=`$rss_pkg`_items}
 						{forminput}
-							<input type="text" id="{$rss_pkg}_items" name="{$max_rss}" size="5" value="{$gBitSystem->getConfig('')$max_rss|default:10}" />
+							<input type="text" id="{$rss_pkg}_items" name="{$max_rss}" size="5" value="{$gBitSystem->getConfig($max_rss)|default:10}" />
 						{/forminput}
 					</div>
 
 					<div class="row">
 						{formlabel label="Title" for=`$rss_pkg`_title}
 						{forminput}
-							<input type="text" id="{$rss_pkg}_title" name="{$title_rss}" size="35" value="{$gBitSystem->getConfig('')$title_rss}" />
+							<input type="text" id="{$rss_pkg}_title" name="{$title_rss}" size="35" value="{$gBitSystem->getConfig($title_rss)}" />
 						{/forminput}
 					</div>
 
 					<div class="row">
 						{formlabel label="Description" for=`$rss_pkg`_desc}
 						{forminput}
-							<input type="text" id="{$rss_pkg}_desc" name="{$desc_rss}" size="35" value="{$gBitSystem->getConfig('')$desc_rss}" />
+							<input type="text" id="{$rss_pkg}_desc" name="{$desc_rss}" size="35" value="{$gBitSystem->getConfig($desc_rss)}" />
 						{/forminput}
 					</div>
 					<hr />
@@ -64,7 +64,7 @@
 					<div class="row">
 						{formlabel label=`$output.label` for=$setting}
 						{forminput}
-							<input type="text" name="{$setting}" id="{$setting}" size="50" value="{$gBitSystem->getConfig('')$setting}" />
+							<input type="text" name="{$setting}" id="{$setting}" size="50" value="{$gBitSystem->getConfig($setting)}" />
 							{formhelp note=`$output.note`}
 						{/forminput}
 					</div>
