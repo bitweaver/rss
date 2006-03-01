@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.8 2006/02/09 10:41:47 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.9 2006/03/01 20:16:24 spiderr Exp $
  * @package rss
  * @subpackage functions
  */
@@ -18,11 +18,11 @@ if( !is_dir( TEMP_PKG_PATH.'rss' ) ) {
 // initiate feed creator class
 $rss = new UniversalFeedCreator();
 
-$rss->copyright   = $gBitSystem->getPreference( 'rssfeed_copyright' );
-$rss->editor      = $gBitSystem->getPreference( 'rssfeed_editor' );
-$rss->webmaster   = $gBitSystem->getPreference( 'rssfeed_webmaster' );
-$rss->language    = $gBitSystem->getPreference( 'rssfeed_language', 'en-us' );
-$rss->descriptionTruncSize = $gBitSystem->getPreference( 'rssfeed_truncate', 500 );
+$rss->copyright   = $gBitSystem->getConfig( 'rssfeed_copyright' );
+$rss->editor      = $gBitSystem->getConfig( 'rssfeed_editor' );
+$rss->webmaster   = $gBitSystem->getConfig( 'rssfeed_webmaster' );
+$rss->language    = $gBitSystem->getConfig( 'rssfeed_language', 'en-us' );
+$rss->descriptionTruncSize = $gBitSystem->getConfig( 'rssfeed_truncate', 500 );
 $rss->descriptionHtmlSyndicated = true;
 
 $rss->link = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
@@ -30,21 +30,21 @@ $rss->syndicationURL = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL.'/'.$_SERVER
 
 // feed image
 if( $gBitSystem->isFeatureActive( 'rssfeed_image_url' ) ) {
-	$image->descriptionTruncSize = $gBitSystem->getPreference( 'rssfeed_truncate', 5000 );
+	$image->descriptionTruncSize = $gBitSystem->getConfig( 'rssfeed_truncate', 5000 );
 	$image->descriptionHtmlSyndicated = true;
 
 	$image = new FeedImage();
-	$image->title = $gBitSystem->getPreference( 'site_title' );
-	$image->url = $gBitSystem->getPreference( 'rssfeed_image_url' );
+	$image->title = $gBitSystem->getConfig( 'site_title' );
+	$image->url = $gBitSystem->getConfig( 'rssfeed_image_url' );
 	$image->link = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
-	$image->description = tra( 'Feed provided by' ).': '.$gBitSystem->getPreference( 'site_title' ).' '.tra( 'Click to visit.' );
+	$image->description = tra( 'Feed provided by' ).': '.$gBitSystem->getConfig( 'site_title' ).' '.tra( 'Click to visit.' );
 	$rss->image = $image;
 }
 
 // here we work out what type of feed were going to feed
 if( empty( $_REQUEST['version'] ) ) {
 	// get default rss feed version from database or set to 0.91 if none in there
-	$version = $gBitSystem->getPreference( "rssfeed_default_version", "RSS0.91" );
+	$version = $gBitSystem->getConfig( "rssfeed_default_version", "RSS0.91" );
 } else {
 	$version = $_REQUEST['version'];
 }

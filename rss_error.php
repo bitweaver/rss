@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.7 2006/02/09 10:30:38 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.8 2006/03/01 20:16:24 spiderr Exp $
  * @package rss
  * @subpackage functions
  *
@@ -10,8 +10,8 @@
  */
 
 // check permission to view the feed
-$rss->title = $gBitSystem->getPreference( 'title_rss_wiki', $gBitSystem->getPreference( 'site_title' ) );
-$rss->description = $gBitSystem->getPreference( 'desc_rss_wiki', $gBitSystem->getPreference( 'site_title' ).' - '.tra( 'RSS Feed' ) );
+$rss->title = $gBitSystem->getConfig( 'title_rss_wiki', $gBitSystem->getConfig( 'site_title' ) );
+$rss->description = $gBitSystem->getConfig( 'desc_rss_wiki', $gBitSystem->getConfig( 'site_title' ).' - '.tra( 'RSS Feed' ) );
 
 $item = new FeedItem();
 $item->title = tra( 'Syndication Problem' );
@@ -21,7 +21,7 @@ $item->description = !empty( $message ) ? $message : tra( "You don't have permis
 $item->source = 'http://'.$_SERVER['HTTP_HOST'].BIT_ROOT_URL;
 $item->author = $gBitUser->getPreference( 'site_title' );
 
-$item->descriptionTruncSize = $gBitSystem->getPreference( 'rssfeed_truncate', 500 );
+$item->descriptionTruncSize = $gBitSystem->getConfig( 'rssfeed_truncate', 500 );
 $item->descriptionHtmlSyndicated = FALSE;
 
 // pass the item on to the rss feed creator
