@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.3 2005/11/22 07:27:31 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.4 2006/03/15 07:37:01 squareing Exp $
  * @package rss
  */
 
@@ -450,7 +450,7 @@ class FeedCreator extends HtmlDescribable {
 	 * This feed's character encoding.
 	 * @since 1.6.1
 	 **/
-	var $encoding = "ISO-8859-1";
+	var $encoding = "UTF-8";
 
 
 	/**
