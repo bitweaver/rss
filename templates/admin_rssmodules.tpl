@@ -12,7 +12,7 @@
 			{box title="Feed Preview"}
 				<ul>
 					{section name=ix loop=$items}
-						<li><a href="{$items[ix].link}">{$items[ix].title}</a></li>
+						<li><a href="{$items[ix].link}">{$items[ix].title|escape}</a></li>
 					{/section}
 				</ul>
 			{/box}

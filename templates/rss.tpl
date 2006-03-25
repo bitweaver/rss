@@ -5,7 +5,7 @@
 			<div id="rssid" class="fade-000000 row">
 				{formlabel label="Requested Feed"}
 				{forminput}
-					<strong><a href="{$feedlink.url}">{$feedlink.title}</a></strong>
+					<strong><a href="{$feedlink.url}">{$feedlink.title|escape}</a></strong>
 					{formhelp note="Use this link for your feed aggregator."}
 				{/forminput}
 			</div>
