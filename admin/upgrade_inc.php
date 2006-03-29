@@ -31,6 +31,11 @@ array( 'DATADICT' => array(
 		'tiki_rss_modules' => 'rss_modules',
 		'tiki_rss_feeds' => 'rss_feeds',
 	)),
+	array( 'RENAMECOLUMN' => array(
+		'rss_feeds' => array(
+			'`cache`' => 'rss_cache'
+		),
+	)),
 )),
 		)
 	),
