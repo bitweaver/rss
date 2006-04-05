@@ -33,7 +33,7 @@ array( 'DATADICT' => array(
 	)),
 	array( 'RENAMECOLUMN' => array(
 		'rss_feeds' => array(
-			'`cache`' => 'rss_cache'
+			'`cache`' => '`rss_cache` B'
 		),
 	)),
 )),
