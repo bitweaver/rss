@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rssmodules.php,v 1.3 2006/02/06 00:10:29 squareing Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rssmodules.php,v 1.4 2006/04/11 13:08:17 squareing Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -14,7 +14,7 @@ if( !isset( $rsslib ) ) {
 	$rsslib = new RssLib();
 }
 
-$gBitSystem->verifyPermission( 'bit_p_admin' );
+$gBitSystem->verifyPermission( 'p_admin' );
 
 if( !isset( $_REQUEST["rss_id"] ) ) {
 	$_REQUEST["rss_id"] = 0;
