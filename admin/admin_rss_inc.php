@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.5 2006/05/04 18:43:22 squareing Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.6 2006/05/04 18:55:30 squareing Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -8,7 +8,7 @@
 
 foreach( $gBitSystem->mPackages as $pkg => $pkgInfo ) {
 	if( is_file( $pkgInfo['path'].$pkg.'_rss.php' ) ) {
-		$formRSSFeeds['rss_'.$pkg] = array(
+		$formRSSFeeds[$pkg.'_rss'] = array(
 			'label' => $pkg,
 		);
 	}

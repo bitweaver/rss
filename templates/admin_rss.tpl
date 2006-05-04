@@ -5,14 +5,14 @@
 		{jstab title="Syndication Feeds"}
 			{legend legend="Syndication Feeds"}
 				<input type="hidden" name="page" value="{$page}" />
-				{foreach from=$formRSSFeeds key=rss_pkg item=output}
+				{foreach from=$formRSSFeeds key=pkg_rss item=output}
 					<div class="row">
-						{formlabel label="Feed for `$output.label`" for=$rss_pkg}
+						{formlabel label="Feed for `$output.label`" for=$pkg_rss}
 						{forminput}
-							{html_checkboxes name="$rss_pkg" values="y" checked=$gBitSystem->getConfig($rss_pkg) labels=false id=$rss_pkg}
-							{assign var="rss_max"          value="`$rss_pkg`_max_records"}
-							{assign var="rss_title"        value="`$rss_pkg`_title"}
-							{assign var="rss_description"  value="`$rss_pkg`_description"}
+							{html_checkboxes name="$pkg_rss" values="y" checked=$gBitSystem->getConfig($pkg_rss) labels=false id=$pkg_rss}
+							{assign var="rss_max"          value="`$pkg_rss`_max_records"}
+							{assign var="rss_title"        value="`$pkg_rss`_title"}
+							{assign var="rss_description"  value="`$pkg_rss`_description"}
 							{formhelp note=`$output.note`}
 						{/forminput}
 					</div>
