@@ -55,7 +55,7 @@
 				<div class="row">
 					{formlabel label="Default Feed Type" for="rssfeed_default_version"}
 					{forminput}
-						{html_options name=rssfeed_default_version id=rssfeed_default_version values=$feedTypes options=$feedTypes selected=$gBitSystem->mPrefs.rssfeed_default_version}
+						{html_options name=rssfeed_default_version id=rssfeed_default_version values=$feedTypes options=$feedTypes selected=$gBitSystem->getConfig('rssfeed_default_version')}
 						{formhelp note="Even after settings this, it will still be possible to use the other types of feeds."}
 					{/forminput}
 				</div>
