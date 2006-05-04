@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.4 2006/02/08 21:51:15 squareing Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.5 2006/05/04 18:43:22 squareing Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -34,6 +34,10 @@ $formRSSSettings = array(
 		'label' => 'Image URL',
 		'note' => 'Enter the full URL to an image that you want to associate with your RSS channels',
 	),
+	'rssfeed_truncate' => array(
+		'label' => 'Truncate RSS feed',
+		'note' => 'Enter the number of characters you want to feed per item in the rss feeds. Default is 5000 characters.',
+	),
 );
 $gBitSmarty->assign( "formRSSSettings",$formRSSSettings );
 
@@ -54,10 +58,11 @@ $gBitSmarty->assign( "feedTypes",$feedTypes );
 if( !empty( $_REQUEST['feed_settings'] ) ) {
 	// save package specific RSS feed settings
 	foreach( array_keys( $formRSSFeeds ) as $item ) {
-		simple_set_toggle( $item, preg_replace( "/^rss_/", "", $item ) );
-		simple_set_int( 'max_'.$item, preg_replace( "/^rss_/", "", $item ) );
-		simple_set_value( 'title_'.$item, preg_replace( "/^rss_/", "", $item ) );
-		simple_set_value( 'desc_'.$item, preg_replace( "/^rss_/", "", $item ) );
+		$package = preg_replace( "/^rss_/", "", $item );
+		simple_set_toggle( $item, $package );
+		simple_set_int( $item.'_max_records', $package );
+		simple_set_value( $item.'_title', $package );
+		simple_set_value( $item.'_description', $package );
 	}
 
 	// deal with the RSS settings

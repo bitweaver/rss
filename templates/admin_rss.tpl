@@ -9,32 +9,32 @@
 					<div class="row">
 						{formlabel label="Feed for `$output.label`" for=$rss_pkg}
 						{forminput}
-							{html_checkboxes name="$rss_pkg" values="y" checked=`$gBitSystem->getConfig($rss_pkg) labels=false id=$rss_pkg}
-							{assign var="max_rss" value="max_`$rss_pkg`"}
-							{assign var="title_rss" value="title_`$rss_pkg`"}
-							{assign var="desc_rss" value="desc_`$rss_pkg`"}
+							{html_checkboxes name="$rss_pkg" values="y" checked=$gBitSystem->getConfig($rss_pkg) labels=false id=$rss_pkg}
+							{assign var="rss_max"          value="`$rss_pkg`_max_records"}
+							{assign var="rss_title"        value="`$rss_pkg`_title"}
+							{assign var="rss_description"  value="`$rss_pkg`_description"}
 							{formhelp note=`$output.note`}
 						{/forminput}
 					</div>
 
 					<div class="row">
-						{formlabel label="Items" for=`$rss_pkg`_items}
+						{formlabel label="Items" for=$rss_max}
 						{forminput}
-							<input type="text" id="{$rss_pkg}_items" name="{$max_rss}" size="5" value="{$gBitSystem->getConfig($max_rss)|default:10}" />
+							<input type="text" id="{$rss_max}" name="{$rss_max}" size="5" value="{$gBitSystem->getConfig($rss_max)|default:10}" />
 						{/forminput}
 					</div>
 
 					<div class="row">
-						{formlabel label="Title" for=`$rss_pkg`_title}
+						{formlabel label="Title" for=$rss_title}
 						{forminput}
-							<input type="text" id="{$rss_pkg}_title" name="{$title_rss}" size="35" value="{$gBitSystem->getConfig($title_rss)}" />
+							<input type="text" id="{$rss_title}" name="{$rss_title}" size="35" value="{$gBitSystem->getConfig($rss_title)}" />
 						{/forminput}
 					</div>
 
 					<div class="row">
-						{formlabel label="Description" for=`$rss_pkg`_desc}
+						{formlabel label="Description" for=$rss_description}
 						{forminput}
-							<input type="text" id="{$rss_pkg}_desc" name="{$desc_rss}" size="35" value="{$gBitSystem->getConfig($desc_rss)}" />
+							<input type="text" id="{$rss_description}" name="{$rss_description}" size="35" value="{$gBitSystem->getConfig($rss_description)}" />
 						{/forminput}
 					</div>
 					<hr />
