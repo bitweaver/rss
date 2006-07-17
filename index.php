@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.2 2005/10/23 14:41:54 squareing Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.3 2006/07/17 09:56:03 nickpalmer Exp $
  *
  * Copyright ( c ) 2004 bitweaver.org
  * Copyright ( c ) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: index.php,v 1.2 2005/10/23 14:41:54 squareing Exp $
+ * $Id: index.php,v 1.3 2006/07/17 09:56:03 nickpalmer Exp $
  * @package pigeonholes
  * @subpackage functions
  */
@@ -21,7 +21,8 @@ require_once( '../bit_setup_inc.php' );
 $gBitSystem->verifyPackage( 'rss' );
 
 foreach( $gBitSystem->mPackages as $pkg => $pkgInfo ) {
-	if( is_file( $pkgInfo['path'].$pkg.'_rss.php' ) ) {
+  	// Install may be chmod 000 if user followed directions
+	if( $pkg != 'install' && is_file( $pkgInfo['path'].$pkg.'_rss.php' ) ) {
 		$pkgs[$pkg] = $pkg;
 	}
 }
