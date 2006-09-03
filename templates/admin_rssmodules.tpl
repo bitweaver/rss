@@ -121,14 +121,14 @@
 				<td>{$channels[user].last_updated|bit_short_datetime}</td>
 				<td>{$channels[user].minutes} min</td>
 				<td style="text-align:center;">
-					{if $channels[user].show_title eq 'y'}{biticon ipackage=liberty iname=active iexplain="Show Title"}{else}{biticon ipackage=liberty iname=inactive iexplain="Show Title"}{/if}
+					{if $channels[user].show_title eq 'y'}{biticon ipackage="icons" iname="face-smile" iexplain="Show Title"}{else}{biticon ipackage="icons" iname="face-sad" iexplain="Show Title"}{/if}
 					<br />
-					{if $channels[user].show_pub_date eq 'y'}{biticon ipackage=liberty iname=active iexplain="Show Publication Time"}{else}{biticon ipackage=liberty iname=inactive iexplain="Show Publication Time"}{/if}
+					{if $channels[user].show_pub_date eq 'y'}{biticon ipackage="icons" iname="face-smile" iexplain="Show Publication Time"}{else}{biticon ipackage="icons" iname="face-sad" iexplain="Show Publication Time"}{/if}
 				</td>
 				<td>
-				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;view={$channels[user].rss_id}">{biticon ipackage=liberty iname=view iexplain=view}</a>
-				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;rss_id={$channels[user].rss_id}">{biticon ipackage=liberty iname=edit iexplain=edit}</a>
-				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;remove={$channels[user].rss_id}">{biticon ipackage=liberty iname=delete iexplain=remove}</a>
+				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;view={$channels[user].rss_id}">{biticon ipackage="icons" iname="document-open" iexplain=view}</a>
+				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;rss_id={$channels[user].rss_id}">{biticon ipackage="icons" iname="accessories-text-editor" iexplain=edit}</a>
+				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;remove={$channels[user].rss_id}">{biticon ipackage="icons" iname="edit-delete" iexplain=remove}</a>
 				</td>
 			</tr>
 			{sectionelse}
