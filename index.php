@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.5 2006/12/09 23:50:29 squareing Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.6 2007/01/01 14:26:52 squareing Exp $
  *
  * Copyright ( c ) 2004 bitweaver.org
  * Copyright ( c ) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: index.php,v 1.5 2006/12/09 23:50:29 squareing Exp $
+ * $Id: index.php,v 1.6 2007/01/01 14:26:52 squareing Exp $
  * @package pigeonholes
  * @subpackage functions
  */
@@ -21,7 +21,7 @@ require_once( '../bit_setup_inc.php' );
 $gBitSystem->verifyPackage( 'rss' );
 
 foreach( $gBitSystem->mPackages as $pkg => $pkgInfo ) {
-  	// Install may be chmod 000 if user followed directions
+	// Install may be chmod 000 if user followed directions
 	if( $pkg != 'install' && is_file( $pkgInfo['path'].$pkg.'_rss.php' ) && $gBitSystem->isFeatureActive( $pkg."_rss" ) ) {
 		$pkgs[$pkg] = ( $gBitSystem->isFeatureActive( $pkg."_rss_title" ) ? $gBitSystem->getConfig( $pkg."_rss_title" ) : $pkg );
 	}
@@ -40,15 +40,17 @@ $feedFormat = array(
 	8 => "HTML",
 	9 => "JS",
 );
-$gBitSmarty->assign( "feedFormat",$feedFormat );
+$gBitSmarty->assign( "feedFormat", $feedFormat );
 
 if( !empty( $_REQUEST['get_feed'] ) ) {
 	$feedlink['url'] = constant( strtoupper( $_REQUEST['pkg'] ).'_PKG_URL' ).$_REQUEST['pkg'].'_rss.php?version='.$_REQUEST['format'];
 	$feedlink['title'] = $_REQUEST['pkg'].' - '.$feedFormat[$_REQUEST['format']];
 	$feedlink['pkg'] = $_REQUEST['pkg'];
 	$feedlink['format'] = $_REQUEST['format'];
-	$gBitSmarty->assign( 'feedlink', $feedlink );
+} else {
+	$feedlink['format'] = $gBitSystem->getConfig( 'rssfeed_default_version' );
 }
+$gBitSmarty->assign( 'feedlink', $feedlink );
 
 $gBitSystem->display( 'bitpackage:rss/rss.tpl', tra( 'Select Feed' ) );
 ?>
