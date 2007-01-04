@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.1.1.1.2.7 2005/12/20 20:41:16 mej Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.1.1.1.2.8 2007/01/04 22:42:42 mej Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.1.1.1.2.7 2005/12/20 20:41:16 mej Exp $
+ * $Id: rss_lib.php,v 1.1.1.1.2.8 2007/01/04 22:42:42 mej Exp $
  */
 
 /**
@@ -125,44 +125,57 @@ class RSSLib extends BitBase {
 
 	function NewsFeed($data, $rss_id) {
 		$news = array();
+		if (!strlen($data)) {
+			return $news;
+		}
 		if( is_numeric( $rss_id ) ) {
 	
 			$show_pub_date = $this->get_rss_show_pub_date($rss_id);
 	
-			$this->buffer = '';
-			$this->flag = 0;
-			$this->parser = xml_parser_create("UTF-8");
-			xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, false);
-			xml_set_object($this->parser, $this);
-			xml_set_element_handler($this->parser, "startElementHandler", "endElementHandler");
-			xml_set_character_data_handler($this->parser, "characterDataHandler");
-	
-			if (!xml_parse($this->parser, $data, 1)) {
-				print ("<!-- XML Parse error at " . xml_get_current_line_number($this->parser) . ":  "
-				       . xml_error_string(xml_get_error_code($this->parser)) . " -->\n");
-				return $news;
+			//printf("<!-- ************************************************************************** -->\n");
+			//printf("<!-- **************** Reading new feed %d -->\n", $rss_id);
+			//printf("<!-- Data(%d):	[[[ %s ]]] -->\n", strlen($data), $data);
+			//printf("<!-- ************************************************************************** -->\n");
+			if (substr($data, 0, 5) == 'ERROR') {
+				$this->buffer = preg_replace('/^ERROR(?:\s+\d+)?:\s+/', '', $data);
+			} else {
+				$this->buffer = '';
+				$this->flag = 0;
+				$this->parser = xml_parser_create("UTF-8");
+				xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, false);
+				xml_set_object($this->parser, $this);
+				xml_set_element_handler($this->parser, "startElementHandler", "endElementHandler");
+				xml_set_character_data_handler($this->parser, "characterDataHandler");
+
+				if (!xml_parse($this->parser, $data, 1)) {
+					print ("<!-- XML Parse error at " . xml_get_current_line_number($this->parser) . ":	 "
+						   . xml_error_string(xml_get_error_code($this->parser)) . " -->\n");
+					//printf("<!-- Data(%d):	[[[ %s ]]] -->\n", strlen($data), $data);
+					return $news;
+				}
+				xml_parser_free ($this->parser);
 			}
-	
-			xml_parser_free ($this->parser);
-			preg_match_all("/<title>(.*?)<\/title>/i", $this->buffer, $titles);
-			preg_match_all("/<link>(.*?)<\/link>/i", $this->buffer, $links);
+
+			//printf("<!-- Buffer(%d):  [[[ %s ]]] -->\n", strlen($this->buffer), $this->buffer);
+			preg_match_all("/<title>(.*?)<\/title>/is", $this->buffer, $titles);
+			preg_match_all("/<link>(.*?)<\/link>/is", $this->buffer, $links);
 	
 			$pubdate = array();
-			preg_match_all("/<dc:date>(.*?)<\/dc:date>/i", $this->buffer, $pubdate);
+			preg_match_all("/<dc:date>(.*?)<\/dc:date>/is", $this->buffer, $pubdate);
 			if (count($pubdate[1])<1)				
-			preg_match_all("/<pubDate>(.*?)<\/pubDate>/i", $this->buffer, $pubdate);
+				preg_match_all("/<pubDate>(.*?)<\/pubDate>/is", $this->buffer, $pubdate);
 	
 			for ($i = 0; $i < count($titles[1]); $i++) {
-				$anew["title"] = $titles[1][$i];
+				$anew["title"] = preg_replace('/\s+/', ' ', $titles[1][$i]);
 	
 				if (isset($links[1][$i])) {
-					$anew["link"] = $links[1][$i];
+					$anew["link"] = preg_replace('/\s+/', ' ', $links[1][$i]);
 				} else {
 					$anew["link"] = '';
 				}
 				if ( isset($pubdate[1][$i]) && ($show_pub_date == 'y') )
 				{
-					$anew["pubdate"] = $pubdate[1][$i];
+					$anew["pubdate"] = preg_replace('/\s+/', ' ', $pubdate[1][$i]);
 				} else {
 					$anew["pubdate"] = '';
 				}
@@ -181,12 +194,20 @@ class RSSLib extends BitBase {
 
 		if ($info) {
 			global $gBitSystem;
-			$data = $this->rss_iconv( tp_http_request($info['url']));
+
+			$data = tp_http_request($info['url']);
+			if ($data === FALSE) {
+				$data = "ERROR:  <title>RSS Feed $info[url] failed to load</title><link>$info[url]</link>";
+			} else if (PEAR::isError($data)) {
+				$data = "ERROR:  <title>RSS Feed failed to load:  " . $data->getMessage() . "</title><link>$info[url]</link>";
+            }
+			$data = $this->rss_iconv($data);
 			$now = $gBitSystem->getUTCTime();
 			$query = "update `".BIT_DB_PREFIX."tiki_rss_modules` set `content`=?, `last_updated`=? where `rss_id`=?";
 			$result = $this->mDb->query($query,array((string)$data,(int) $now, (int) $rss_id));
 			return $data;
 		} else {
+			error_log("Unable to get info for RSS feed $rss_id.");
 			return false;
 		}
 	}
