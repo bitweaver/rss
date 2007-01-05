@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.4 2006/03/15 07:37:01 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.5 2007/01/05 20:12:27 squareing Exp $
  * @package rss
  */
 
@@ -547,7 +547,7 @@ class FeedCreator extends HtmlDescribable {
 		if (!empty($this->cssStyleSheet)) {
 			$xml .= "<?xml-stylesheet href=\"".$this->cssStyleSheet."\" type=\"text/css\"?>\n";
 		} else {
-			$cssStyleSheet = "http://www.w3.org/2000/08/w3c-synd/style.css";
+			$xml .= "<?xml-stylesheet href=\"http://www.w3.org/2000/08/w3c-synd/style.css\" type=\"text/css\"?>\n";
 		}
 		if (!empty($this->xslStyleSheet)) $xml .= "<?xml-stylesheet href=\"".$this->xslStyleSheet."\" type=\"text/xsl\"?>\n";
 		return $xml;
