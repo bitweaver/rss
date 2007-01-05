@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.10 2006/05/01 10:53:45 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.11 2007/01/05 20:12:54 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -18,12 +18,13 @@ if( !is_dir( TEMP_PKG_PATH.'rss' ) ) {
 // initiate feed creator class
 $rss = new UniversalFeedCreator();
 
-$rss->copyright   = $gBitSystem->getConfig( 'rssfeed_copyright' );
-$rss->editor      = $gBitSystem->getConfig( 'rssfeed_editor' );
-$rss->webmaster   = $gBitSystem->getConfig( 'rssfeed_webmaster' );
-$rss->language    = $gBitSystem->getConfig( 'rssfeed_language', 'en-us' );
-$rss->descriptionTruncSize = $gBitSystem->getConfig( 'rssfeed_truncate', 500 );
-$rss->descriptionHtmlSyndicated = true;
+$rss->copyright                 = $gBitSystem->getConfig( 'rssfeed_copyright' );
+$rss->editor                    = $gBitSystem->getConfig( 'rssfeed_editor' );
+$rss->webmaster                 = $gBitSystem->getConfig( 'rssfeed_webmaster' );
+$rss->language                  = $gBitSystem->getConfig( 'rssfeed_language', 'en-us' );
+$rss->cssStyleSheet             = $gBitSystem->getConfig( 'rssfeed_css_url' );
+$rss->descriptionTruncSize      = $gBitSystem->getConfig( 'rssfeed_truncate', 500 );
+$rss->descriptionHtmlSyndicated = TRUE;
 
 $rss->link = BIT_BASE_URI.BIT_ROOT_URL;
 $rss->syndicationURL = BIT_BASE_URI.BIT_ROOT_URL.'/'.$_SERVER['PHP_SELF'];

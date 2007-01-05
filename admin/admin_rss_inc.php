@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.6 2006/05/04 18:55:30 squareing Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.7 2007/01/05 20:12:54 squareing Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -34,12 +34,16 @@ $formRSSSettings = array(
 		'label' => 'Image URL',
 		'note' => 'Enter the full URL to an image that you want to associate with your RSS channels',
 	),
+	'rssfeed_css_url' => array(
+		'label' => 'CSS File URL',
+		'note' => 'Enter the full URL to a CSS file you want to use to style your RSS Feeds.',
+	),
 	'rssfeed_truncate' => array(
 		'label' => 'Truncate RSS feed',
 		'note' => 'Enter the number of characters you want to feed per item in the rss feeds. Default is 5000 characters.',
 	),
 );
-$gBitSmarty->assign( "formRSSSettings",$formRSSSettings );
+$gBitSmarty->assign( "formRSSSettings", $formRSSSettings );
 
 $feedTypes = array(
 	0 => "RSS 0.91",
