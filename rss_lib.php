@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.10 2006/08/28 07:51:03 jht001 Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.11 2007/01/06 09:46:24 squareing Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.10 2006/08/28 07:51:03 jht001 Exp $
+ * $Id: rss_lib.php,v 1.11 2007/01/06 09:46:24 squareing Exp $
  */
 
 /**
@@ -31,7 +31,7 @@ class RSSLib extends BitBase {
 			$bindvars=array();
 		}
 
-		$query = "select * from `".BIT_DB_PREFIX."rss_modules` $mid order by ".$this->mDb->convert_sortmode($sort_mode);
+		$query = "select * from `".BIT_DB_PREFIX."rss_modules` $mid order by ".$this->mDb->convertSortmode($sort_mode);
 		$query_cant = "select count(*) from `".BIT_DB_PREFIX."rss_modules` $mid";
 		$result = $this->mDb->query($query,$bindvars,$max_records,$offset);
 		$cant = $this->mDb->getOne($query_cant,$bindvars);
