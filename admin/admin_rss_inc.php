@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.7 2007/01/05 20:12:54 squareing Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.8 2007/01/07 10:48:32 squareing Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -45,6 +45,18 @@ $formRSSSettings = array(
 );
 $gBitSmarty->assign( "formRSSSettings", $formRSSSettings );
 
+$cacheTimes = array(
+	0      => tra( "(no cache)" ),
+	60     => "1 ".tra( "minute" ),
+	300    => "5 ".tra( "minutes" ),
+	600    => "10 ".tra( "minutes" ),
+	1800   => "30 ".tra( "minutes" ),
+	3600   => "1 ".tra( "hour" ),
+	7200   => "2 ".tra( "hours" ),
+	14400  => "4 ".tra( "hours" ),
+);
+$gBitSmarty->assign( "cacheTimes", $cacheTimes );
+
 $feedTypes = array(
 	0 => "RSS 0.91",
 	1 => "RSS 1.0",
@@ -57,7 +69,7 @@ $feedTypes = array(
 	8 => "HTML",
 	9 => "JS",
 );
-$gBitSmarty->assign( "feedTypes",$feedTypes );
+$gBitSmarty->assign( "feedTypes", $feedTypes );
 
 if( !empty( $_REQUEST['feed_settings'] ) ) {
 	// save package specific RSS feed settings
@@ -74,5 +86,6 @@ if( !empty( $_REQUEST['feed_settings'] ) ) {
 		simple_set_value( $item, RSS_PKG_NAME );
 	}
 	simple_set_value( 'rssfeed_default_version' );
+	simple_set_int( 'rssfeed_cache_time' );
 }
 ?>

@@ -60,6 +60,14 @@
 					{/forminput}
 				</div>
 
+				<div class="row">
+					{formlabel label="Cache Time" for="rssfeed_cache_time"}
+					{forminput}
+						{html_options name=rssfeed_cache_time id=rssfeed_cache_time values=$cacheTimes options=$cacheTimes selected=$gBitSystem->getConfig('rssfeed_cache_time')}
+						{formhelp note="Set the cache time of the individual rss feeds. Setting this to 0 will disable caching (recommended for sites with a complex permission setup)."}
+					{/forminput}
+				</div>
+
 				{foreach from=$formRSSSettings key=setting item=output}
 					<div class="row">
 						{formlabel label=`$output.label` for=$setting}

@@ -33,5 +33,7 @@ $gBitInstaller->registerPackageInfo( RSS_PKG_NAME, array(
 ) );
 
 // ### Default Preferences
-// every package inserts it's own rss preference
+$gBitInstaller->registerPreferences( RSS_PKG_NAME, array(
+	array( RSS_PKG_NAME, 'rssfeed_cache_time', 3600 ),
+));
 ?>
