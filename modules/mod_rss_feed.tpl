@@ -8,7 +8,7 @@
 					<div class="date">{$modRSSItems[ix].pubdate}
 					<br />
 					{if $modRSSItems[ix].author}by {$modRSSItems[ix].author}{/if}</div>
-					{$modRSSItems[ix].description}&nbsp;
+					{if !$hideDesc}{$modRSSItems[ix].description}&nbsp;{/if}
 					<a class="more" href="{$modRSSItems[ix].link}">Read more</a>
 				</li>
 			{sectionelse}

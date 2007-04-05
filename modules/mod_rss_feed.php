@@ -18,8 +18,11 @@ if( @BitBase::verifyId( $module_params['id'] ) ) {
 
 	$rssdata = $rsslib->get_rss_module_content( $module_params['id'] );
 	$items = $rsslib->parse_rss_data( $rssdata, $module_params['id'] );
-
+	
 	$gBitSmarty->assign( 'modRSSItems', $items );	
+	if (!empty($module_params['desc']) && $module_params['desc'] == 'n'){
+		$gBitSmarty->assign( 'hideDesc', TRUE );
+	}
 }else{
 	//todo assign this as an error
 	//$repl = '<b>rss can not be found, id must be a number</b>';
