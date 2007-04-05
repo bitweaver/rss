@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.11 2007/01/06 09:46:24 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.12 2007/04/05 15:58:58 wjames5 Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.11 2007/01/06 09:46:24 squareing Exp $
+ * $Id: rss_lib.php,v 1.12 2007/04/05 15:58:58 wjames5 Exp $
  */
 
 /**
@@ -151,7 +151,9 @@ class RSSLib extends BitBase {
 	
 			xml_parser_free ($this->parser);
 			preg_match_all("/<title>(.*?)<\/title>/i", $this->buffer, $titles);
+			preg_match_all("/<author>(.*?)<\/author>/i", $this->buffer, $author);
 			preg_match_all("/<link>(.*?)<\/link>/i", $this->buffer, $links);
+			preg_match_all("/<description>(.*?)<\/description>/i", $this->buffer, $description);
 	
 			$pubdate = array();
 			preg_match_all("/<dc:date>(.*?)<\/dc:date>/i", $this->buffer, $pubdate);
@@ -160,7 +162,17 @@ class RSSLib extends BitBase {
 	
 			for ($i = 0; $i < count($titles[1]); $i++) {
 				$anew["title"] = $titles[1][$i];
-	
+				
+				if (isset($author[1][$i])) {
+					$anew["author"] = $author[1][$i];
+				} else {
+					$anew["author"] = '';
+				}
+				if (isset($description[1][$i])) {
+					$anew["description"] = $description[1][$i];
+				}else{
+					$anew["description"] = '';
+				}
 				if (isset($links[1][$i])) {
 					$anew["link"] = $links[1][$i];
 				} else {
