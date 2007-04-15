@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.12 2007/04/05 15:58:58 wjames5 Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.13 2007/04/15 09:53:50 squareing Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.12 2007/04/05 15:58:58 wjames5 Exp $
+ * $Id: rss_lib.php,v 1.13 2007/04/15 09:53:50 squareing Exp $
  */
 
 /**
@@ -199,7 +199,7 @@ class RSSLib extends BitBase {
 
 		if ($info) {
 			global $gBitSystem;
-			$data = $this->rss_iconv( tp_http_request($info['url']));
+			$data = $this->rss_iconv( $gBitSystem->remoteHttpRequest($info['url']));
 			$now = $gBitSystem->getUTCTime();
 			$query = "update `".BIT_DB_PREFIX."rss_modules` set `content`=?, `last_updated`=? where `rss_id`=?";
 			$result = $this->mDb->query($query,array((string)$data,(int) $now, (int) $rss_id));
