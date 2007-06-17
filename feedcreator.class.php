@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.5 2007/01/05 20:12:27 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.6 2007/06/17 16:46:55 squareing Exp $
  * @package rss
  */
 
@@ -602,7 +602,10 @@ class FeedCreator extends HtmlDescribable {
 		// HTTP redirect, some feed readers' simple HTTP implementations don't follow it
 		//Header("Location: ".$filename);
 
-		Header("Content-Type: ".$this->contentType."; charset=".$this->encoding."; filename=".basename($filename));
+		// {{{ BITMOD
+		//Header("Content-Type: ".$this->contentType."; charset=".$this->encoding."; filename=".basename($filename));
+		Header("Content-Type: ".$this->contentType."; charset=".$this->encoding.";");
+		// BITMOD }}}
 		Header("Content-Disposition: inline; filename=".basename($filename));
 		readfile($filename, "r");
 		die();
