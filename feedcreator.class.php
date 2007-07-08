@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.6 2007/06/17 16:46:55 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.7 2007/07/08 07:24:17 squareing Exp $
  * @package rss
  */
 
@@ -643,6 +643,9 @@ class FeedCreator extends HtmlDescribable {
 	function saveFeed($filename="", $displayContents=true) {
 		if ($filename=="") {
 			$filename = $this->_generateFilename();
+		}
+		if( !is_dir( dirname( $filename ))) {
+			mkdir_p( dirname( $filename ));
 		}
 		$feedFile = fopen($filename, "w+");
 		if ($feedFile) {
