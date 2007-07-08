@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.11 2007/01/05 20:12:54 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.12 2007/07/08 07:56:40 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -92,5 +92,8 @@ switch( $version ) {
 	case "js":
 		$rss_version_name = "JS";
 		break;
-	}
+}
+
+ksort( $gBitUser->mGroups );
+$cacheFileTail = 'p'.implode( array_keys( $gBitUser->mGroups ), '.' ).'_'.$rss_version_name.'.xml';
 ?>
