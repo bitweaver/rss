@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rssmodules.php,v 1.4 2006/04/11 13:08:17 squareing Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rssmodules.php,v 1.5 2007/07/31 22:37:03 wjames5 Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -23,9 +23,18 @@ if( !isset( $_REQUEST["rss_id"] ) ) {
 $gBitSmarty->assign( 'rss_id', $_REQUEST["rss_id"] );
 
 if( isset( $_REQUEST["view"] ) ) {
-	$data = $rsslib->get_rss_module_content( $_REQUEST["view"] );
-	$items = $rsslib->parse_rss_data( $data, $_REQUEST["rss_id"] );
+	$feedHash = $rsslib->get_rss_module( $_REQUEST["view"] );
+	$url = $feedHash['url'];
 
+	//load up SimplePie
+	require_once( UTIL_PKG_PATH.'simplepie/simplepie.inc' );
+	$feed = new SimplePie();
+	$feed->set_feed_url( $url );
+	$feed->enable_cache( FALSE ); //we don't cache these previews since in theory we want to confirm that we are getting the feed ok
+	$feed->init();
+	$feed->handle_content_type();
+
+	$items = $feed->get_items();
 	$gBitSmarty->assign_by_ref( 'items', $items );
 }
 

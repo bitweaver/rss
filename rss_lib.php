@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.14 2007/04/15 10:41:31 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.15 2007/07/31 22:37:03 wjames5 Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.14 2007/04/15 10:41:31 squareing Exp $
+ * $Id: rss_lib.php,v 1.15 2007/07/31 22:37:03 wjames5 Exp $
  */
 
 /**
@@ -321,6 +321,27 @@ class RSSLib extends BitBase {
 
 		return $xmlstr;
 	}
+	
+	function get_short_desc( $text ){
+		// first we can remove unwanted stuff like images and lists or whatever - this is rough
+		$pattern = array(
+			"!<img[^>]*>!is",
+			//"!<ul.*?</ul>!is",
+		);
+		$text = preg_replace( $pattern, "", $text );
+		
+		$text = substr($text, 0, 1000);		
+		
+		// now we strip remaining tags and xs whitespace
+		$text = trim( preg_replace( "!\s+!s", " ", strip_tags( $text )));
+		
+		// finally we try to extract sentences as well as we can
+		// to add more characters to split sentences by add them after the last \? - you might want to add : or ;
+		preg_match_all( "#([\.!\?\s\)]*)(.*?[a-zA-Z]{2}\s*[\.\!\?]+\)?)#s", $text, $matches );
+		
+		return $matches[2];
+	}
+	
 }
 
 global $rsslib;
