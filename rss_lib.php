@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.15 2007/07/31 22:37:03 wjames5 Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.16 2007/08/01 12:00:55 wjames5 Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.15 2007/07/31 22:37:03 wjames5 Exp $
+ * $Id: rss_lib.php,v 1.16 2007/08/01 12:00:55 wjames5 Exp $
  */
 
 /**
@@ -342,6 +342,84 @@ class RSSLib extends BitBase {
 		return $matches[2];
 	}
 	
+	function get_short_descs( $items, $length=1 ){
+		$shortdescs = Array();
+		
+		if ( !empty($items) ){
+			foreach ($items as $item){
+				//we try to trim each story to given number of sentences
+				$sentences = $this->get_short_desc( $item->get_description() );
+				
+				$shortdesc = NULL;
+				for ($n = 0; $n < $length; $n++){
+					$space = ($n > 0)?" ":NULL;
+					$shortdesc .= $space;
+					$shortdesc .= ( !empty( $sentences[$n] ) && $sentences[$n] != NULL ) ? $sentences[$n] : NULL;
+				}
+				
+				$shortdescs[] = $shortdesc;
+			}
+		}
+		
+		return $shortdescs;
+	}
+
+	function parse_feeds( $pParamHash ){
+		//set path to rss feed cache
+		$cache_path = TEMP_PKG_PATH.'rss/simplepie';
+		
+		//we do this earlier instead of later because if we can't cache the source we shouldn't be pulling the rss feed.
+		if( !is_dir( $cache_path ) && !mkdir_p( $cache_path ) ) {
+			bit_log_error( 'Can not create the cache directory: '.$cache_path );
+			
+			return FALSE;
+		}else{
+			//load up parser SimplePie
+			require_once( UTIL_PKG_PATH.'simplepie/simplepie.inc' );
+
+			if (!is_array($pParamHash['id'])){
+				$ids = explode( ",", $pParamHash['id'] );
+			}else{
+				$ids = $pParamHash['id'];
+			}
+			
+			$urls = Array();
+			
+			foreach ($ids as $id){
+				if( @BitBase::verifyId( $id ) ) {
+					$feedHash = $this->get_rss_module( $id );
+					$urls[] = $feedHash['url'];
+				}else{
+					//todo assign this as an error
+					//$repl = '<b>rss can not be found, id must be a number</b>';
+				}
+			}
+			
+			$feed = new SimplePie();
+			 
+			//Instead of only passing in one feed url, we'll pass in an array of multiple feeds
+			$feed->set_feed_url( $urls );
+			
+			$feed->set_cache_location( $cache_path );
+			
+			//set cache time
+			$cache_time = !empty($pParamHash['cache_time'])?$pParamHash['cache_time']:1;
+			$feed->set_cache_duration( $cache_time );
+			
+			//not sure - we may want to eventually use this
+			//$feed->set_stupidly_fast(TRUE);
+			 
+			// Initialize the feed object
+			$feed->init();
+			 
+			// This will work if all of the feeds accept the same settings.
+			$feed->handle_content_type();
+			
+			$items = $feed->get_items();
+			
+			return $items;
+		}
+	}	
 }
 
 global $rsslib;
