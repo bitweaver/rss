@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.16 2007/08/01 12:00:55 wjames5 Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.17 2007/08/01 12:12:53 wjames5 Exp $
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: rss_lib.php,v 1.16 2007/08/01 12:00:55 wjames5 Exp $
+ * $Id: rss_lib.php,v 1.17 2007/08/01 12:12:53 wjames5 Exp $
  */
 
 /**
@@ -123,6 +123,11 @@ class RSSLib extends BitBase {
 		}
 	}
 
+	/* DEPRECATED - SLATED FOR REMOVAL
+	 * We now get content from SimplePie parser via parse_feeds below
+	 * -wjames5
+	 */
+	/*
 	function NewsFeed($data, $rss_id) {
 		$news = array();
 		if( is_numeric( $rss_id ) ) {
@@ -189,11 +194,18 @@ class RSSLib extends BitBase {
 		}
 		return $news;
 	}
-
+	*/
+	
+	/* DEPRECATED - SLATED FOR REMOVAL
+	 * We now get content from SimplePie parser via parse_feeds below
+	 * -wjames5
+	 */
+	/*
 	function parse_rss_data($rssdata, $rss_id) {
 		return $this->NewsFeed($rssdata, $rss_id);
 	}
-
+	*/
+	
 	function refresh_rss_module($rss_id) {
 		$info = $this->get_rss_module($rss_id);
 
@@ -244,6 +256,11 @@ class RSSLib extends BitBase {
 		return $ret;
 	}
 
+	/* DEPRECATED - SLATED FOR REMOVAL
+	 * We now get content from SimplePie parser via parse_feeds below
+	 * -wjames5
+	 */
+	/*
 	function get_rss_module_content($rss_id) {
 		$ret = FALSE;
 		if( is_numeric( $rss_id ) ) {
@@ -262,7 +279,8 @@ class RSSLib extends BitBase {
 		}
 		return $ret;
 	}
-
+	*/
+	
 	function rss_iconv($xmlstr, $tencod = "UTF-8") {
 		if (preg_match("/<\?xml.*encoding=\"(.*)\".*\?>/", $xmlstr, $xml_head)) {
 			$sencod = strtoupper($xml_head[1]);
