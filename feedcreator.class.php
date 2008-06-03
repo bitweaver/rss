@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.7 2007/07/08 07:24:17 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.8 2008/06/03 17:00:24 wjames5 Exp $
  * @package rss
  */
 
@@ -824,6 +824,14 @@ class RSSCreator10 extends FeedCreator {
 			$feed.= "        <title>".htmlspecialchars(strip_tags(strtr($this->items[$i]->title,"\n\r","  ")))."</title>\n";
 			$feed.= "        <link>".htmlspecialchars($this->items[$i]->link)."</link>\n";
 			$feed.= "        <description>".htmlspecialchars($this->items[$i]->description)."</description>\n";
+
+			/* currently not supported by RSS 1.0 specification
+			if ( $this->items[$i]->enclosure!="" && is_array( $this->items[$i]->enclosure ) ){
+				$enc = $this->items[$i]->enclosure;
+				$feed.= "        <enclosure url='".$enc['url']."' length='".$enc['length']."' type='".$enc['type']."' />";
+			}
+			*/
+
 			$feed.= $this->_createAdditionalElements($this->items[$i]->additionalElements, "        ");
 			$feed.= "    </item>\n";
 		}
@@ -932,6 +940,7 @@ class RSSCreator091 extends FeedCreator {
 		if ($this->skipDays!="") {
 			$feed.= "        <skipDays>".htmlspecialchars($this->skipDays)."</skipDays>\n";
 		}
+
 		$feed.= $this->_createAdditionalElements($this->additionalElements, "    ");
 
 		for ($i=0;$i<count($this->items);$i++) {
@@ -961,6 +970,10 @@ class RSSCreator091 extends FeedCreator {
 			}
 			if ($this->items[$i]->guid!="") {
 				$feed.= "            <guid>".htmlspecialchars($this->items[$i]->guid)."</guid>\n";
+			}
+			if ( $this->items[$i]->enclosure!="" && is_array( $this->items[$i]->enclosure ) ){
+				$enc = $this->items[$i]->enclosure;
+				$feed.= "            <enclosure url='".$enc['url']."' length='".$enc['length']."' type='".$enc['type']."' />";
 			}
 			$feed.= $this->_createAdditionalElements($this->items[$i]->additionalElements, "        ");
 			$feed.= "        </item>\n";
