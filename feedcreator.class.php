@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.8 2008/06/03 17:00:24 wjames5 Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.9 2008/06/03 17:33:42 wjames5 Exp $
  * @package rss
  */
 
@@ -971,7 +971,7 @@ class RSSCreator091 extends FeedCreator {
 			if ($this->items[$i]->guid!="") {
 				$feed.= "            <guid>".htmlspecialchars($this->items[$i]->guid)."</guid>\n";
 			}
-			if ( $this->items[$i]->enclosure!="" && is_array( $this->items[$i]->enclosure ) ){
+			if ( isset( $this->items[$i]->enclosure ) && is_array( $this->items[$i]->enclosure ) ){
 				$enc = $this->items[$i]->enclosure;
 				$feed.= "            <enclosure url='".$enc['url']."' length='".$enc['length']."' type='".$enc['type']."' />";
 			}
