@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.9 2008/06/03 17:33:42 wjames5 Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.10 2008/06/03 19:03:35 wjames5 Exp $
  * @package rss
  */
 
@@ -880,7 +880,16 @@ class RSSCreator091 extends FeedCreator {
 		$feed = "<?xml version=\"1.0\" encoding=\"".$this->encoding."\"?>\n";
 		$feed.= $this->_createGeneratorComment();
 		$feed.= $this->_createStylesheetReferences();
-		$feed.= "<rss version=\"".$this->RSSVersion."\">\n";
+		$feed.= "<rss version=\"".$this->RSSVersion."\"";
+		// handler references for our rss tag
+		if ( isset ($this->media) ){
+			$feed.= " xmlns:media=\"http://search.yahoo.com/mrss/\"";
+		}
+		if ( isset ($this->itunes ) ){
+			$feed.= " xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\"";
+		}
+		// we're done with our rss tag
+		$feed.= ">\n";
 		$feed.= "    <channel>\n";
 		$feed.= "        <title>".FeedCreator::iTrunc(htmlspecialchars($this->title),100)."</title>\n";
 		$this->descriptionTruncSize = 500;
@@ -939,6 +948,19 @@ class RSSCreator091 extends FeedCreator {
 		}
 		if ($this->skipDays!="") {
 			$feed.= "        <skipDays>".htmlspecialchars($this->skipDays)."</skipDays>\n";
+		}
+		if ( isset( $this->media ) && is_array( $this->media ) ){
+			if ( isset( $this->media['thumbnail'] ) ){
+				$feed.= "        <media:thumbnail url='".$this->media['thumbnail']."'/>\n";
+			}
+		}
+		if ( isset( $this->itunes ) && is_array( $this->itunes ) ){
+			if ( isset( $this->itunes['thumbnail'] ) ){
+				$feed.= "        <itunes:image href='".$this->itunes['thumbnail']."'/>\n";
+			}
+			// itunes expects an explicit setting. we default to no because we're not into this facist crap, but if you need to set it to yes you can.
+			$itunesExplicit = isset( $this->itunes['explicit'] ) ? $this->itunes['explicit'] : "no";
+			$feed.= "        <itunes:explicit>".$itunesExplicit."</itunes:explicit>\n";
 		}
 
 		$feed.= $this->_createAdditionalElements($this->additionalElements, "    ");
