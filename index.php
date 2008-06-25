@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.6 2007/01/01 14:26:52 squareing Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.7 2008/06/25 22:21:22 spiderr Exp $
  *
  * Copyright ( c ) 2004 bitweaver.org
  * Copyright ( c ) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details
  *
- * $Id: index.php,v 1.6 2007/01/01 14:26:52 squareing Exp $
+ * $Id: index.php,v 1.7 2008/06/25 22:21:22 spiderr Exp $
  * @package pigeonholes
  * @subpackage functions
  */
@@ -52,5 +52,5 @@ if( !empty( $_REQUEST['get_feed'] ) ) {
 }
 $gBitSmarty->assign( 'feedlink', $feedlink );
 
-$gBitSystem->display( 'bitpackage:rss/rss.tpl', tra( 'Select Feed' ) );
+$gBitSystem->display( 'bitpackage:rss/rss.tpl', tra( 'Select Feed' ) , array( 'display_mode' => 'display' ));
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rssmodules.php,v 1.5 2007/07/31 22:37:03 wjames5 Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rssmodules.php,v 1.6 2008/06/25 22:21:22 spiderr Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -145,7 +145,7 @@ $gBitSmarty->assign_by_ref('channels', $channels["data"]);
 
 
 // Display the template
-$gBitSystem->display( 'bitpackage:rss/admin_rssmodules.tpl');
+$gBitSystem->display( 'bitpackage:rss/admin_rssmodules.tpl', NULL, array( 'display_mode' => 'admin' ));
 
 ?>
 
