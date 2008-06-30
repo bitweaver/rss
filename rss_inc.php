@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.12 2007/07/08 07:56:40 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.13 2008/06/30 19:29:17 squareing Exp $
  * @package rss
  * @subpackage functions
  */
@@ -26,8 +26,9 @@ $rss->cssStyleSheet             = $gBitSystem->getConfig( 'rssfeed_css_url' );
 $rss->descriptionTruncSize      = $gBitSystem->getConfig( 'rssfeed_truncate', 500 );
 $rss->descriptionHtmlSyndicated = TRUE;
 
-$rss->link = BIT_BASE_URI.BIT_ROOT_URL;
-$rss->syndicationURL = BIT_BASE_URI.BIT_ROOT_URL.'/'.$_SERVER['PHP_SELF'];
+$root = empty( $_REQUEST['uri_mode'] ) ? BIT_BASE_URI.BIT_ROOT_URL : BIT_ROOT_URI;
+$rss->link = $root;
+$rss->syndicationURL = trim( $root, "/" ).$_SERVER['PHP_SELF'];
 
 // feed image
 if( $gBitSystem->isFeatureActive( 'rssfeed_image_url' ) ) {
@@ -37,7 +38,7 @@ if( $gBitSystem->isFeatureActive( 'rssfeed_image_url' ) ) {
 	$image = new FeedImage();
 	$image->title = $gBitSystem->getConfig( 'site_title' );
 	$image->url = $gBitSystem->getConfig( 'rssfeed_image_url' );
-	$image->link = BIT_BASE_URI.BIT_ROOT_URL;
+	$image->link = $root;
 	$image->description = tra( 'Feed provided by' ).': '.$gBitSystem->getConfig( 'site_title' ).' '.tra( 'Click to visit.' );
 	$rss->image = $image;
 }
