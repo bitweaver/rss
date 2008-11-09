@@ -1,6 +1,6 @@
 <?php
 /**
- * @version  $Revision: 1.1 $
+ * @version  $Revision: 1.2 $
  * @package  liberty
  * @subpackage plugins_data
  */
@@ -17,7 +17,7 @@
 // | Reworked for Bitweaver (& Undoubtedly Screwed-Up)
 // | by: StarRider <starrrider@users.sourceforge.net>
 // +----------------------------------------------------------------------+
-// $Id: data.rss.php,v 1.1 2008/07/08 07:17:24 spiderr Exp $
+// $Id: data.rss.php,v 1.2 2008/11/09 09:08:55 squareing Exp $
 
 /**
  * definitions
@@ -35,8 +35,6 @@ $pluginParams = array (
 	'description'   => tra("Display RSS Feeds"),
 	'help_function' => 'rss_extended_help',
 	'syntax'        => "{RSS id= max= }",
-	'path'          => LIBERTY_PKG_PATH.'plugins/data.rss.php',
-	'security'      => 'registered',
 	'plugin_type'   => DATA_PLUGIN,
 	'biticon'       => '{biticon ilocation=quicktag ipackage=rss iname=rss-16x16 iexplain="RSS Feed"}',
 	'taginsert'     => '{rss}'
