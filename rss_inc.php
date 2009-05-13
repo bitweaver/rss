@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.13 2008/06/30 19:29:17 squareing Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.14 2009/05/13 23:09:09 wjames5 Exp $
  * @package rss
  * @subpackage functions
  */
@@ -92,6 +92,9 @@ switch( $version ) {
 	case "9":
 	case "js":
 		$rss_version_name = "JS";
+		break;
+	default:
+		$rss_version_name = "RSS0.91";
 		break;
 }
 
