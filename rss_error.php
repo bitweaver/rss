@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.8 2006/03/01 20:16:24 spiderr Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_error.php,v 1.9 2009/10/02 18:14:10 wjames5 Exp $
  * @package rss
  * @subpackage functions
  *
@@ -8,10 +8,6 @@
  * default $message is:
  * "You don't have permission to view this syndication feed."
  */
-
-// check permission to view the feed
-$rss->title = $gBitSystem->getConfig( 'title_rss_wiki', $gBitSystem->getConfig( 'site_title' ) );
-$rss->description = $gBitSystem->getConfig( 'desc_rss_wiki', $gBitSystem->getConfig( 'site_title' ).' - '.tra( 'RSS Feed' ) );
 
 $item = new FeedItem();
 $item->title = tra( 'Syndication Problem' );
