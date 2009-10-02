@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.14 2009/05/13 23:09:09 wjames5 Exp $
+ * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.15 2009/10/02 18:17:47 wjames5 Exp $
  * @package rss
  * @subpackage functions
  */
@@ -13,6 +13,13 @@ require_once( RSS_PKG_PATH."feedcreator.class.php" );
 // make sure the feeds cache dir is available
 if( !is_dir( TEMP_PKG_PATH.'rss' ) ) {
 	mkdir_p( TEMP_PKG_PATH.'rss' );
+}
+
+// if http auth is required run it before we start anything else
+if( $gBitSystem->getConfig( 'rssfeed_httpauth' ) && 
+	!empty($_REQUEST['httpauth']) && 
+	!$gBitUser->isRegistered() ){
+	users_httpauth();
 }
 
 // initiate feed creator class

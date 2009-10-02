@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.9 2009/10/01 14:17:03 wjames5 Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.10 2009/10/02 18:17:47 wjames5 Exp $
  *
  * Copyright ( c ) 2004 bitweaver.org
  * Copyright ( c ) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See below for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See http://www.gnu.org/copyleft/lesser.html for details
  *
- * $Id: index.php,v 1.9 2009/10/01 14:17:03 wjames5 Exp $
+ * $Id: index.php,v 1.10 2009/10/02 18:17:47 wjames5 Exp $
  * @package pigeonholes
  * @subpackage functions
  */
@@ -43,7 +43,7 @@ $feedFormat = array(
 $gBitSmarty->assign( "feedFormat", $feedFormat );
 
 if( !empty( $_REQUEST['get_feed'] ) ) {
-	$feedlink['url'] = constant( strtoupper( $_REQUEST['pkg'] ).'_PKG_URL' ).$_REQUEST['pkg'].'_rss.php?version='.$_REQUEST['format'];
+	$feedlink['url'] = constant( strtoupper( $_REQUEST['pkg'] ).'_PKG_URL' ).$_REQUEST['pkg'].'_rss.php?version='.$_REQUEST['format'].( $gBitSystem->getConfig( 'rssfeed_httpauth' ) && $gBitUser->isRegistered()?'&httpauth=y':'');
 	$feedlink['title'] = $_REQUEST['pkg'].' - '.$feedFormat[$_REQUEST['format']];
 	$feedlink['pkg'] = $_REQUEST['pkg'];
 	$feedlink['format'] = $_REQUEST['format'];

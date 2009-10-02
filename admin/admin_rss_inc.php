@@ -1,6 +1,6 @@
 <?php
 
-// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.10 2009/10/01 14:17:03 wjames5 Exp $
+// $Header: /cvsroot/bitweaver/_bit_rss/admin/admin_rss_inc.php,v 1.11 2009/10/02 18:17:47 wjames5 Exp $
 
 // Copyright (c) 2002-2003, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 // All Rights Reserved. See below for details and a complete list of authors.
@@ -45,6 +45,14 @@ $formRSSSettings = array(
 );
 $gBitSmarty->assign( "formRSSSettings", $formRSSSettings );
 
+$formRSSOptions = array(
+	'rssfeed_httpauth' => array(
+		'label' => 'Enable HTTP Authentication',
+		'note' => 'Use HTTP Authentication with SSL to enable Registered Users to gain access to Private Content Feeds.',
+	),
+);
+$gBitSmarty->assign( "formRSSOptions", $formRSSOptions );
+
 $cacheTimes = array(
 	0      => tra( "(no cache)" ),
 	60     => "1 ".tra( "minute" ),
@@ -87,5 +95,9 @@ if( !empty( $_REQUEST['feed_settings'] ) ) {
 	}
 	simple_set_value( 'rssfeed_default_version' );
 	simple_set_int( 'rssfeed_cache_time' );
+
+	foreach( $formRSSOptions as $item => $data ) {
+		simple_set_toggle( $item, RSS_PKG_NAME );
+	}
 }
 ?>
