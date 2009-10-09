@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.10 2009/10/02 18:17:47 wjames5 Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.11 2009/10/09 04:24:13 wjames5 Exp $
  *
  * Copyright ( c ) 2004 bitweaver.org
  * Copyright ( c ) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See below for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See http://www.gnu.org/copyleft/lesser.html for details
  *
- * $Id: index.php,v 1.10 2009/10/02 18:17:47 wjames5 Exp $
+ * $Id: index.php,v 1.11 2009/10/09 04:24:13 wjames5 Exp $
  * @package pigeonholes
  * @subpackage functions
  */
@@ -48,6 +48,7 @@ if( !empty( $_REQUEST['get_feed'] ) ) {
 	$feedlink['pkg'] = $_REQUEST['pkg'];
 	$feedlink['format'] = $_REQUEST['format'];
 } else {
+	$feedlink['pkg'] = !empty($_REQUEST['pkg'])?$_REQUEST['pkg']:NULL;
 	$feedlink['format'] = $gBitSystem->getConfig( 'rssfeed_default_version' );
 }
 $gBitSmarty->assign( 'feedlink', $feedlink );
