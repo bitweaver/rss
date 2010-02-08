@@ -1,6 +1,6 @@
 <?php
 /**
- * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.11 2009/10/09 04:24:13 wjames5 Exp $
+ * $Header: /cvsroot/bitweaver/_bit_rss/index.php,v 1.12 2010/02/08 21:27:25 wjames5 Exp $
  *
  * Copyright ( c ) 2004 bitweaver.org
  * Copyright ( c ) 2003 tikwiki.org
@@ -8,7 +8,7 @@
  * All Rights Reserved. See below for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See http://www.gnu.org/copyleft/lesser.html for details
  *
- * $Id: index.php,v 1.11 2009/10/09 04:24:13 wjames5 Exp $
+ * $Id: index.php,v 1.12 2010/02/08 21:27:25 wjames5 Exp $
  * @package pigeonholes
  * @subpackage functions
  */
@@ -16,7 +16,7 @@
 /**
  * required setup
  */
-require_once( '../bit_setup_inc.php' );
+require_once( '../kernel/setup_inc.php' );
 
 $gBitSystem->verifyPackage( 'rss' );
 
