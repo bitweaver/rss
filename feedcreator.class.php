@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/feedcreator.class.php,v 1.10 2008/06/03 19:03:35 wjames5 Exp $
+ * @version $Header$
  * @package rss
  */
 

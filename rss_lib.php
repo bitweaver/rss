@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_lib.php,v 1.19 2009/10/01 14:17:03 wjames5 Exp $
+ * @version $Header$
  * @package rss
  *
  * Copyright (c) 2004 bitweaver.org
@@ -9,7 +9,7 @@
  * All Rights Reserved. See below for details and a complete list of authors.
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See http://www.gnu.org/copyleft/lesser.html for details
  *
- * $Id: rss_lib.php,v 1.19 2009/10/01 14:17:03 wjames5 Exp $
+ * $Id$
  */
 
 /**

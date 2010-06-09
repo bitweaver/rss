@@ -1,6 +1,6 @@
 <?php
 /**
- * @version $Header: /cvsroot/bitweaver/_bit_rss/rss_inc.php,v 1.15 2009/10/02 18:17:47 wjames5 Exp $
+ * @version $Header$
  * @package rss
  * @subpackage functions
  */
