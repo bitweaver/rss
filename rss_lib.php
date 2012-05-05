@@ -17,7 +17,7 @@
  */
 class RSSLib extends BitBase {
 	function RSSLib() {
-		BitBase::BitBase();
+		parent::__construct();
 	}
 
 	function list_rss_modules($offset, $max_records, $sort_mode, $find) {
