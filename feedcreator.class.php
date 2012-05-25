@@ -374,7 +374,7 @@ class UniversalFeedCreator extends FeedCreator {
 	 *
 	 * @param	string	format	format the feed should comply to. Valid values are:
 	 *			"PIE0.1" (deprecated), "mbox", "RSS0.91", "RSS1.0", "RSS2.0", "OPML", "ATOM", "ATOM0.3", "HTML", "JS"
-	 * @param	string	filename	optional	the filename where a recent version of the feed is saved. If not specified, the filename is $_SERVER["PHP_SELF"] with the extension changed to .xml (see _generateFilename()).
+	 * @param	string	filename	optional	the filename where a recent version of the feed is saved. If not specified, the filename is $_SERVER["SCRIPT_NAME"] with the extension changed to .xml (see _generateFilename()).
 	 * @param	boolean	displayContents	optional	send the content of the file or not. If true, the file will be sent in the body of the response.
 	 */
 	function saveFeed($format="RSS0.91", $filename="", $displayContents=true) {
@@ -392,7 +392,7 @@ class UniversalFeedCreator extends FeedCreator {
     *
     * @param   string   format   format the feed should comply to. Valid values are:
     *       "PIE0.1" (deprecated), "mbox", "RSS0.91", "RSS1.0", "RSS2.0", "OPML", "ATOM0.3".
-    * @param filename   string   optional the filename where a recent version of the feed is saved. If not specified, the filename is $_SERVER["PHP_SELF"] with the extension changed to .xml (see _generateFilename()).
+    * @param filename   string   optional the filename where a recent version of the feed is saved. If not specified, the filename is $_SERVER["SCRIPT_NAME"] with the extension changed to .xml (see _generateFilename()).
     * @param timeout int      optional the timeout in seconds before a cached version is refreshed (defaults to 3600 = 1 hour)
     */
    function useCached($format="RSS0.91", $filename="", $timeout=3600) {
@@ -563,10 +563,10 @@ class FeedCreator extends HtmlDescribable {
 	}
 
 	/**
-	 * Generate a filename for the feed cache file. The result will be $_SERVER["PHP_SELF"] with the extension changed to .xml.
+	 * Generate a filename for the feed cache file. The result will be $_SERVER["SCRIPT_NAME"] with the extension changed to .xml.
 	 * For example:
 	 *
-	 * echo $_SERVER["PHP_SELF"]."\n";
+	 * echo $_SERVER["SCRIPT_NAME"]."\n";
 	 * echo FeedCreator::_generateFilename();
 	 *
 	 * would produce:
@@ -579,7 +579,7 @@ class FeedCreator extends HtmlDescribable {
 	 * @access private
 	 */
 	function _generateFilename() {
-		$fileInfo = pathinfo($_SERVER["PHP_SELF"]);
+		$fileInfo = pathinfo($_SERVER["SCRIPT_NAME"]);
 		return substr($fileInfo["basename"],0,-(strlen($fileInfo["extension"])+1)).".xml";
 	}
 
@@ -618,7 +618,7 @@ class FeedCreator extends HtmlDescribable {
 	 * before anything else, especially before you do the time consuming task to build the feed
 	 * (web fetching, for example).
 	 * @since 1.4
-	 * @param filename	string	optional	the filename where a recent version of the feed is saved. If not specified, the filename is $_SERVER["PHP_SELF"] with the extension changed to .xml (see _generateFilename()).
+	 * @param filename	string	optional	the filename where a recent version of the feed is saved. If not specified, the filename is $_SERVER["SCRIPT_NAME"] with the extension changed to .xml (see _generateFilename()).
 	 * @param timeout	int		optional	the timeout in seconds before a cached version is refreshed (defaults to 3600 = 1 hour)
 	 */
 	function useCached($filename="", $timeout=3600) {
@@ -637,7 +637,7 @@ class FeedCreator extends HtmlDescribable {
 	 * header may be sent to redirect the user to the newly created file.
 	 * @since 1.4
 	 *
-	 * @param filename	string	optional	the filename where a recent version of the feed is saved. If not specified, the filename is $_SERVER["PHP_SELF"] with the extension changed to .xml (see _generateFilename()).
+	 * @param filename	string	optional	the filename where a recent version of the feed is saved. If not specified, the filename is $_SERVER["SCRIPT_NAME"] with the extension changed to .xml (see _generateFilename()).
 	 * @param redirect	boolean	optional	send an HTTP redirect header or not. If true, the user will be automatically redirected to the created file.
 	 */
 	function saveFeed($filename="", $displayContents=true) {
@@ -1236,7 +1236,7 @@ class MBOXCreator extends FeedCreator {
 	 * @access private
 	 */
 	function _generateFilename() {
-		$fileInfo = pathinfo($_SERVER["PHP_SELF"]);
+		$fileInfo = pathinfo($_SERVER["SCRIPT_NAME"]);
 		return substr($fileInfo["basename"],0,-(strlen($fileInfo["extension"])+1)).".mbox";
 	}
 }
@@ -1442,7 +1442,7 @@ class HTMLCreator extends FeedCreator {
 	 * @access private
 	 */
 	function _generateFilename() {
-		$fileInfo = pathinfo($_SERVER["PHP_SELF"]);
+		$fileInfo = pathinfo($_SERVER["SCRIPT_NAME"]);
 		return substr($fileInfo["basename"],0,-(strlen($fileInfo["extension"])+1)).".html";
 	}
 }
@@ -1482,7 +1482,7 @@ class JSCreator extends HTMLCreator {
 	 * @access private
 	 */
 	function _generateFilename() {
-		$fileInfo = pathinfo($_SERVER["PHP_SELF"]);
+		$fileInfo = pathinfo($_SERVER["SCRIPT_NAME"]);
 		return substr($fileInfo["basename"],0,-(strlen($fileInfo["extension"])+1)).".js";
 	}
 
@@ -1505,7 +1505,7 @@ $rss->description = "daily news from the PHP scripting world";
 //$rss->xslStyleSheet = "http://feedster.com/rss20.xsl";
 
 $rss->link = "http://www.dailyphp.net/news";
-$rss->feedURL = "http://www.dailyphp.net/".$PHP_SELF;
+$rss->feedURL = "http://www.dailyphp.net/".$_SERVER['SCRIPT_NAME'];
 
 $image = new FeedImage();
 $image->title = "dailyphp.net logo";

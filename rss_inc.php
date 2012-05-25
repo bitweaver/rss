@@ -35,7 +35,7 @@ $rss->descriptionHtmlSyndicated = TRUE;
 
 $root = empty( $_REQUEST['uri_mode'] ) ? BIT_BASE_URI.BIT_ROOT_URL : BIT_ROOT_URI;
 $rss->link = $root;
-$rss->syndicationURL = trim( $root, "/" ).$_SERVER['PHP_SELF'];
+$rss->syndicationURL = trim( $root, "/" ).$_SERVER['SCRIPT_NAME'];
 
 // feed image
 if( $gBitSystem->isFeatureActive( 'rssfeed_image_url' ) ) {
