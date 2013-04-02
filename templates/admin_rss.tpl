@@ -6,7 +6,7 @@
 			{legend legend="Syndication Feeds"}
 				<input type="hidden" name="page" value="{$page}" />
 				{foreach from=$formRSSFeeds key=pkg_rss item=output}
-					<div class="row">
+					<div class="control-group">
 						{formlabel label="Feed for `$output.label`" for=$pkg_rss}
 						{forminput}
 							{html_checkboxes name="$pkg_rss" values="y" checked=$gBitSystem->getConfig($pkg_rss) labels=false id=$pkg_rss}
@@ -17,21 +17,21 @@
 						{/forminput}
 					</div>
 
-					<div class="row">
+					<div class="control-group">
 						{formlabel label="Items" for=$rss_max}
 						{forminput}
 							<input type="text" id="{$rss_max}" name="{$rss_max}" size="5" value="{$gBitSystem->getConfig($rss_max)|default:10}" />
 						{/forminput}
 					</div>
 
-					<div class="row">
+					<div class="control-group">
 						{formlabel label="Title" for=$rss_title}
 						{forminput}
 							<input type="text" id="{$rss_title}" name="{$rss_title}" size="35" value="{$gBitSystem->getConfig($rss_title)}" />
 						{/forminput}
 					</div>
 
-					<div class="row">
+					<div class="control-group">
 						{formlabel label="Description" for=$rss_description}
 						{forminput}
 							<input type="text" id="{$rss_description}" name="{$rss_description}" size="35" value="{$gBitSystem->getConfig($rss_description)}" />
@@ -52,7 +52,7 @@
 
 		{jstab title="Syndication Settings"}
 			{legend legend="Syndication Settings"}
-				<div class="row">
+				<div class="control-group">
 					{formlabel label="Default Feed Type" for="rssfeed_default_version"}
 					{forminput}
 						{html_options name=rssfeed_default_version id=rssfeed_default_version values=$feedTypes options=$feedTypes selected=$gBitSystem->getConfig('rssfeed_default_version')}
@@ -60,7 +60,7 @@
 					{/forminput}
 				</div>
 
-				<div class="row">
+				<div class="control-group">
 					{formlabel label="Cache Time" for="rssfeed_cache_time"}
 					{forminput}
 						{html_options name=rssfeed_cache_time id=rssfeed_cache_time values=$cacheTimes options=$cacheTimes selected=$gBitSystem->getConfig('rssfeed_cache_time')}
@@ -69,7 +69,7 @@
 				</div>
 
 				{foreach from=$formRSSSettings key=setting item=output}
-					<div class="row">
+					<div class="control-group">
 						{formlabel label=`$output.label` for=$setting}
 						{forminput}
 							<input type="text" name="{$setting}" id="{$setting}" size="50" value="{$gBitSystem->getConfig($setting)}" />
@@ -79,7 +79,7 @@
 				{/foreach}
 
 				{foreach from=$formRSSOptions key=item item=output}
-				<div class="row">
+				<div class="control-group">
 					{formlabel label=`$output.label` for=$item}
 					{forminput}
 						{html_checkboxes name="$item" values="y" checked=$gBitSystem->getConfig($item) labels=false id=$item}
@@ -91,7 +91,7 @@
 		{/jstab}
 	{/jstabs}
 
-	<div class="row submit">
+	<div class="control-group submit">
 		<input type="submit" name="feed_settings" value="{tr}Change preferences{/tr}" />
 	</div>
 {/form}

@@ -20,7 +20,7 @@
 
 		{form legend="Create / Edit Syndication Module"}
 			<input type="hidden" name="rss_id" value="{$rss_id}" />
-			<div class="row">
+			<div class="control-group">
 				{formlabel label="Title" for="name"}
 				{forminput}
 					<input type="text" name="name" id="name" value="{$name|escape}" />
@@ -28,7 +28,7 @@
 				{/forminput}
 			</div>
 
-			<div class="row">
+			<div class="control-group">
 				{formlabel label="Description" for="description"}
 				{forminput}
 					<textarea name="description" id="description" rows="3" cols="40">{$description|escape}</textarea>
@@ -36,7 +36,7 @@
 				{/forminput}
 			</div>
 
-			<div class="row">
+			<div class="control-group">
 				{formlabel label="URL" for="url"}
 				{forminput}
 					<input size="50" type="text" name="url" id="url" value="{$url|escape}" />
@@ -44,7 +44,7 @@
 				{/forminput}
 			</div>
 
-			<div class="row">
+			<div class="control-group">
 				{formlabel label="Refresh Rate" for="refresh"}
 				{forminput}
 					<select name="refresh" id="refresh">
@@ -66,7 +66,7 @@
 				{/forminput}
 			</div>
 
-			<div class="row">
+			<div class="control-group">
 				{formlabel label="Show Feed Title" for="show-title"}
 				{forminput}
 					<input type="checkbox" name="show_title" id="show-title" {if $show_title eq 'y'}checked="checked"{/if} />
@@ -74,7 +74,7 @@
 				{/forminput}
 			</div>
 
-			<div class="row">
+			<div class="control-group">
 				{formlabel label="Publication Time" for="pub-date"}
 				{forminput}
 					<input type="checkbox" name="show_pub_date" id="pub-date" {if $show_pub_date eq 'y'}checked="checked"{/if} />
@@ -82,7 +82,7 @@
 				{/forminput}
 			</div>
 
-			<div class="row submit">
+			<div class="control-group submit">
 				<input type="submit" name="save" value="{tr}Save{/tr}" />
 			</div>
 		{/form}
