@@ -127,8 +127,8 @@
 				</td>
 				<td>
 				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;view={$channels[user].rss_id}">{biticon ipackage="icons" iname="document-open" iexplain=view}</a>
-				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;rss_id={$channels[user].rss_id}">{biticon ipackage="icons" iname="accessories-text-editor" iexplain=edit}</a>
-				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;remove={$channels[user].rss_id}">{biticon ipackage="icons" iname="edit-delete" iexplain=remove}</a>
+				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;rss_id={$channels[user].rss_id}">{booticon iname="icon-edit" ipackage="icons" iexplain=edit}</a>
+				   <a href="{$smarty.const.RSS_PKG_URL}admin/admin_rssmodules.php?offset={$offset}&amp;sort_mode={$sort_mode}&amp;remove={$channels[user].rss_id}">{booticon iname="icon-trash" ipackage="icons" iexplain=remove}</a>
 				</td>
 			</tr>
 			{sectionelse}
