@@ -19,7 +19,7 @@ $listHash['cache_time'] = !empty($cache_time)?$cache_time:1;
 	
 if ( $items = $rsslib->parse_feeds( $listHash ) ){
 
-	$gBitSmarty->assign( 'modRSSItems', $items );	
+	$_template->tpl_vars['modRSSItems'] = new Smarty_variable( $items );	
 
 	//if we want short descriptions get them
 	$shortdescs = Array();	
@@ -27,7 +27,7 @@ if ( $items = $rsslib->parse_feeds( $listHash ) ){
 		$shortdescs = $rsslib->get_short_descs( $items, $module_params['desc_length'] );
 	}
 
-	$gBitSmarty->assign( 'short_desc', $shortdescs );	
+	$_template->tpl_vars['short_desc'] = new Smarty_variable( $shortdescs );	
 	
 	//if desc is set and no desc_length is given then we present the full description/content of each item
 	$hideDesc = TRUE;
@@ -35,9 +35,9 @@ if ( $items = $rsslib->parse_feeds( $listHash ) ){
 		$hideDesc = FALSE;
 	}
 	
-	$gBitSmarty->assign( 'hideDesc', $hideDesc );
+	$_template->tpl_vars['hideDesc'] = new Smarty_variable( $hideDesc );
 	
 	$max = !empty( $module_params['max'] ) ? $module_params['max'] : 10;
-	$gBitSmarty->assign( 'max', $max );
+	$_template->tpl_vars['max'] = new Smarty_variable( $max );
 }
 ?>
