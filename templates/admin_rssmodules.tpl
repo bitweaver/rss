@@ -67,19 +67,17 @@
 			</div>
 
 			<div class="control-group">
-				{formlabel label="Show Feed Title" for="show-title"}
-				{forminput}
-					<input type="checkbox" name="show_title" id="show-title" {if $show_title eq 'y'}checked="checked"{/if} />
+				<label class="checkbox">
+					<input type="checkbox" name="show_title" id="show-title" {if $show_title eq 'y'}checked="checked"{/if} />Show Feed Title
 					{formhelp note="Might not work as expected."}
-				{/forminput}
+				</label>
 			</div>
 
 			<div class="control-group">
-				{formlabel label="Publication Time" for="pub-date"}
-				{forminput}
-					<input type="checkbox" name="show_pub_date" id="pub-date" {if $show_pub_date eq 'y'}checked="checked"{/if} />
+				<label class="checkbox">
+					<input type="checkbox" name="show_pub_date" id="pub-date" {if $show_pub_date eq 'y'}checked="checked"{/if} />Publication Time
 					{formhelp note="Show the time at which the feed was published."}
-				{/forminput}
+				</label>
 			</div>
 
 			<div class="control-group submit">
@@ -89,7 +87,7 @@
 
 		{minifind}
 
-		<table class="data">
+		<table class="table data">
 			<caption>{tr}RSS Modules{/tr}</caption>
 			<tr>
 				<th>{smartlink ititle="ID" isort=rss_id offset=$offset}</th>
