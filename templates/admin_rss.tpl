@@ -92,7 +92,7 @@
 	{/jstabs}
 
 	<div class="control-group submit">
-		<input type="submit" class="btn" name="feed_settings" value="{tr}Change preferences{/tr}" />
+		<input type="submit" class="btn btn-default" name="feed_settings" value="{tr}Change preferences{/tr}" />
 	</div>
 {/form}
 
