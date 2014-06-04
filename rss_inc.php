@@ -16,8 +16,8 @@ if( !is_dir( TEMP_PKG_PATH.'rss' ) ) {
 }
 
 // if http auth is required run it before we start anything else
-if( $gBitSystem->getConfig( 'rssfeed_httpauth' ) && 
-	!empty($_REQUEST['httpauth']) && 
+if( $gBitSystem->getConfig( 'rssfeed_httpauth' ) &&
+	!empty($_REQUEST['httpauth']) &&
 	!$gBitUser->isRegistered() ){
 	users_httpauth();
 }
@@ -105,6 +105,11 @@ switch( $version ) {
 		break;
 }
 
-ksort( $gBitUser->mGroups );
-$cacheFileTail = 'p'.implode( array_keys( $gBitUser->mGroups ), '.' ).'_'.$rss_version_name.'.xml';
+if ( isset( $gBitUser->mGroups ) ) {
+	ksort( $gBitUser->mGroups );
+	$cacheFileTail = 'p'.implode( array_keys( $gBitUser->mGroups ), '.' ).'_'.$rss_version_name.'.xml';
+} else {
+	ksort( $gBitUser->mRoles );
+	$cacheFileTail = 'p'.implode( array_keys( $gBitUser->mRoles ), '.' ).'_'.$rss_version_name.'.xml';
+}
 ?>
