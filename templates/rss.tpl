@@ -18,7 +18,7 @@
 					<hr />
 				{/if}
 
-				<div class="control-group">
+				<div class="form-group">
 					{formlabel label="Feed Format" for="format"}
 					{forminput}
 						{html_options name=format id=format values=$feedFormat options=$feedFormat selected=$feedlink.format}
@@ -26,7 +26,7 @@
 					{/forminput}
 				</div>
 
-				<div class="control-group">
+				<div class="form-group">
 					{formlabel label="Feed" for="pkg"}
 					{forminput}
 						{html_options name=pkg id=pkg values=$pkgs options=$pkgs selected=$feedlink.pkg}
@@ -34,7 +34,7 @@
 					{/forminput}
 				</div>
 
-				<div class="control-group submit">
+				<div class="form-group submit">
 					<input type="submit" class="btn btn-default" name="get_feed" value="Get Feed" />
 				</div>
 			{/legend}
