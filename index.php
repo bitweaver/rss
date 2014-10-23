@@ -26,6 +26,7 @@ foreach( $gBitSystem->mPackages as $pkg => $pkgInfo ) {
 		$pkgs[$pkg] = ( $gBitSystem->isFeatureActive( $pkg."_rss_title" ) ? $gBitSystem->getConfig( $pkg."_rss_title" ) : $pkg );
 	}
 }
+if ( empty($pkgs) ) { $pkgs['none'] = 'No Feeds Enabled'; }
 $gBitSmarty->assign( "pkgs", $pkgs );
 
 $feedFormat = array(
