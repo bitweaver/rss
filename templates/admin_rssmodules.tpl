@@ -67,17 +67,17 @@
 			</div>
 
 			<div class="form-group">
-				<label class="checkbox">
+				{forminput label="checkbox"}
 					<input type="checkbox" name="show_title" id="show-title" {if $show_title eq 'y'}checked="checked"{/if} />Show Feed Title
 					{formhelp note="Might not work as expected."}
-				</label>
+				{/forminput}
 			</div>
 
 			<div class="form-group">
-				<label class="checkbox">
+				{forminput label="checkbox"}
 					<input type="checkbox" name="show_pub_date" id="pub-date" {if $show_pub_date eq 'y'}checked="checked"{/if} />Publication Time
 					{formhelp note="Show the time at which the feed was published."}
-				</label>
+				{/forminput}
 			</div>
 
 			<div class="form-group submit">
