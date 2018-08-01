@@ -390,7 +390,7 @@ class RSSLib extends BitBase {
 			return FALSE;
 		}else{
 			//load up parser SimplePie
-			require_once( UTIL_PKG_PATH.'simplepie/simplepie.inc' );
+			require_once( UTIL_PKG_INC.'simplepie/simplepie.inc' );
 
 			if (!is_array($pParamHash['id'])){
 				$ids = explode( ",", $pParamHash['id'] );
